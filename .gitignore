@@ -35,3 +35,6 @@ sysinfo.txt
 
 # IDEA IDE
 .idea
+
+# Dummy .blend1 files
+*.blend1
