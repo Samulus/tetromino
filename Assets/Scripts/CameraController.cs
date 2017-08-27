@@ -1,21 +1,33 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography.X509Certificates;
+using UnityEditor;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour {
-  public float speedH = 2.0f;
-  public float speedV = 2.0f;
+  public GameObject Player;
+  public float SpeedMetersPerSec;
+  public float EyeHeight;
+  private Vector3 _eye;
 
-  private Vector3 pos;
-
-  // Use this for initialization
-  void Start () {
-    pos = this.transform.position;
+  void Start() {
+    _eye = Player.transform.position;
+    _eye.y -= EyeHeight;
+    transform.LookAt(_eye);
   }
-	
-  // Update is called once per frame
-  void Update () {
-    pos.x += speedH * Input.GetAxis("Horizontal");
-    pos.z -= speedV * Input.GetAxis("Vertical");
-    transform.position = new Vector3(pos.x, pos.y, pos.z);
-    transform.LookAt(Vector3.zero);
+
+  void Update() {
+    if (Input.GetKey(KeyCode.LeftArrow)) {
+      transform.RotateAround(_eye, Vector3.up, Time.deltaTime * SpeedMetersPerSec);
+    }
+
+    else if (Input.GetKey(KeyCode.RightArrow)) {
+      transform.RotateAround(_eye, Vector3.up, -Time.deltaTime * SpeedMetersPerSec);
+    }
+    
+    if (Input.GetKey(KeyCode.UpArrow)) {
+      transform.RotateAround(_eye, Vector3.left, Time.deltaTime * SpeedMetersPerSec);
+    }
+    else if (Input.GetKey(KeyCode.DownArrow)) {
+      transform.RotateAround(_eye, Vector3.left, -Time.deltaTime * SpeedMetersPerSec);
+    }
   }
 }
