@@ -35,6 +35,9 @@ sysinfo.txt
 
 # IDEA IDE
 .idea
+JetBrains.meta
+Unity3DRider.cs
+Unity3DRider.cs.meta
 
 # Dummy .blend1 files
 *.blend1
