@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour {
   public GameObject Player;
