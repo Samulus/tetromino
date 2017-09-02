@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour {
   void Start() {
     _eye = Player.transform.position;
     _eye.y -= EyeHeight;
-    transform.LookAt(_eye);
+    //transform.LookAt(_eye);
   }
 
   void Update() {
