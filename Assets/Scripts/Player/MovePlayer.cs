@@ -1,5 +1,6 @@
 ﻿using System.Net.Security;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviour {
   public bool debug;
@@ -39,6 +40,10 @@ public class MovePlayer : MonoBehaviour {
     _SetupFloorCollisionCube();
     _SetupAbyssCollisionCube();
     _SetupBackpedalCollisionCube();
+  }
+
+  void OnTriggerEnter(Collider other) {
+    SceneManager.LoadScene("002");
   }
 
   void Update() {
