@@ -41,11 +41,7 @@ public class MovePlayer : MonoBehaviour {
     _SetupAbyssCollisionCube();
     _SetupBackpedalCollisionCube();
   }
-
-  void OnTriggerEnter(Collider other) {
-    SceneManager.LoadScene("002");
-  }
-
+  
   void Update() {
     // Cardinal Movement
     if (Input.GetKeyDown("w") && CanMoveForward()) {
