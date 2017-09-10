@@ -61,6 +61,7 @@ ModelImporter:
     100106: Upperarm_Right
     100108: Upperarm_Right_0
     100110: Man
+    100112: Human
     400000: Back
     400002: Back_0
     400004: FemaleArm
@@ -117,11 +118,15 @@ ModelImporter:
     400106: Upperarm_Right
     400108: Upperarm_Right_0
     400110: Man
+    400112: Human
     4300000: HumanMale
     4300002: HumanFemale
     4300004: Man
     7400000: Default Take
     7400002: MaleArmAction
+    7400004: MaleArmAction_001
+    7400006: HumanAction_001
+    7400008: Walk
     9500000: //RootNode
     13700000: HumanFemale
     13700002: HumanMale
