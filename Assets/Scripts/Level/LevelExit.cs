@@ -16,10 +16,5 @@ public class LevelExit : MonoBehaviour {
   
   void Start() {
     _currentlevel = Int32.Parse(SceneManager.GetActiveScene().name);
-    Debug.Log(_currentlevel);
-  }
-
-  // Update is called once per frame
-  void Update() {
   }
 }
