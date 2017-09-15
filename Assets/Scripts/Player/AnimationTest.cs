@@ -1,21 +1,31 @@
 ﻿using UnityEngine;
+using MoonSharp.Interpreter;
 
 public class AnimationTest : MonoBehaviour {
-  
   private Animation _animation;
   private CharacterController _characterController;
   private CliffEdgeDetection _cliffEdgeDetection;
+  private ItemDetection _itemDetection;
+  private Inventory _inventory;
+
+  private static AnimationTest selected;
 
   void Awake() {
     _animation = GetComponent<Animation>();
     _characterController = GetComponent<CharacterController>();
     _cliffEdgeDetection = GetComponent<CliffEdgeDetection>();
-    
-    Debug.Assert(_cliffEdgeDetection != null);
+    _itemDetection = GetComponent<ItemDetection>();
+    _inventory = GetComponent<Inventory>();
   }
-
+  
+  void OnMouseDown() {
+    selected = this;
+  }
+  
   void Update() {
-
+    if (selected == null || selected != this) {
+      return;
+    }
     // Rotations
     if (Input.GetKeyDown("d")) {
       transform.Rotate(Vector3.up, 90);
@@ -25,9 +35,9 @@ public class AnimationTest : MonoBehaviour {
       transform.Rotate(Vector3.up, -90);
     }
 
-    if (Input.GetKey("e")) {
-      Debug.Log("PickUp");
+    if (_itemDetection.isInfrontOfItem() && Input.GetKey("e")) {
       _animation.Play("PickUp", PlayMode.StopAll);
+      //_inventory.pickUp();
       return;
     }
 
