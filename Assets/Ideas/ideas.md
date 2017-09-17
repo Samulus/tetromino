@@ -19,7 +19,6 @@ These emit lasers that other blocks can recieve
 ### Mirror 
 Use these to redirect the direction that mirrors travel in 
 
-
-
-
 ### Recorder
+Use these to replay up to 20s worth of activity, spawns a
+clone that will then run and do whatever you just did.

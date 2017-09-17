@@ -34,12 +34,12 @@ namespace Player {
       }
 
       // Allow the robots to walk forward and backwards.
-      if (!_cliffDetect.IsCliffInfront() && Input.GetKey("w")) {
+      if (Input.GetKey("w") && !_cliffDetect.IsCliffInfront()) {
         _animation.Play("Walk", PlayMode.StopAll);
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         _characterController.SimpleMove(forward);
       }
-      else if (!_cliffDetect.IsCliffBehind() && Input.GetKey("s")) {
+      else if (Input.GetKey("s") && !_cliffDetect.IsCliffBehind()) {
         _animation.Play("Walk", PlayMode.StopAll); // TODO: Backpedaling animation.
         Vector3 forward = transform.TransformDirection(Vector3.back);
         _characterController.SimpleMove(forward);
