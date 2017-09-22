@@ -9,6 +9,10 @@ namespace Player {
   public class State : MonoBehaviour {
     private static State _playerState;
 
+    private void Awake() {
+      _playerState = this;
+    }
+
     private void OnMouseDown() {
       _playerState = this;
     }
