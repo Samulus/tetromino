@@ -24,6 +24,7 @@ namespace Models.Devices.ColorChanger {
       Output
     }
 
+    private Material _noLaser;
     private BoxCollider _collider;
     private Rigidbody _rigidbody;
     private IoType _type;
@@ -45,6 +46,7 @@ namespace Models.Devices.ColorChanger {
     private void Init(IoType type) {
       // Setup Rigidbody
       _rigidbody = gameObject.AddComponent<Rigidbody>();
+      _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
       _rigidbody.isKinematic = true;
 
       // Setup collider
@@ -59,8 +61,17 @@ namespace Models.Devices.ColorChanger {
     }
 
     private void OnTriggerEnter(Collider other) {
-      var msg = string.Format("We '{0}' collided with {1}", gameObject.name, other.gameObject.name);
-      Debug.Log(msg);
+      if (other.name != "Output" && other.name != "Input" && _type == IoType.Input) {
+        Debug.Log(other.name);
+        _noLaser = transform.parent.GetComponent<MeshRenderer>().material;
+        transform.parent.GetComponent<MeshRenderer>().material = other.GetComponent<Laser>().LaserMaterial;
+      }
+      //var msg = string.Format("We '{0}' collided with {1}", gameObject.name, other.gameObject.name);
+      //Debug.Log(msg);
+    }
+
+    private void OnTriggerExit(Collider other) {
+      transform.parent.GetComponent<MeshRenderer>().material = _noLaser;
     }
   }
 
