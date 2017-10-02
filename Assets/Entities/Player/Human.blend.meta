@@ -63,6 +63,7 @@ ModelImporter:
     100110: Man
     100112: Human
     100114: Cube
+    100116: Stairs
     400000: Back
     400002: Back_0
     400004: FemaleArm
@@ -121,12 +122,16 @@ ModelImporter:
     400110: Man
     400112: Human
     400114: Cube
+    400116: Stairs
     2300000: Cube
+    2300002: Stairs
     3300000: Cube
+    3300002: Stairs
     4300000: HumanMale
     4300002: HumanFemale
     4300004: Man
     4300006: Cube
+    4300008: Stairs
     7400000: Default Take
     7400002: MaleArmAction
     7400004: MaleArmAction_001
@@ -135,6 +140,7 @@ ModelImporter:
     7400010: Idle
     7400012: Pick_Up
     7400014: PickUp
+    7400016: StairDescend
     9500000: //RootNode
     11100000: //RootNode
     13700000: HumanFemale
