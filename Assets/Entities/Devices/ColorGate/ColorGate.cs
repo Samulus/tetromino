@@ -18,6 +18,7 @@ namespace Entities.Devices.ColorGate {
             transform.GetComponentInChildren<SkinnedMeshRenderer>().material = ExpectedMaterial;
             SetupGateCollider();
             SetupColorDetectionZone();
+            _animation = GetComponent<Animation>();
             _animation.playAutomatically = false;
         }
 
@@ -28,9 +29,8 @@ namespace Entities.Devices.ColorGate {
         /// </summary>
         private void SetupGateCollider() {
             _gateCollider = gameObject.AddComponent<BoxCollider>();
-            // TODO: Magic constants 
-            _gateCollider.center = new Vector3(0f, 1f, 0f); 
-            _gateCollider.size = new Vector3(1f, 2f, 0.1f);
+            _gateCollider.center = new Vector3(0f, 1f, 0f); // TODO: Magic Constants
+            _gateCollider.size = new Vector3(1f, 2f, 0.1f); // TODO: Magic Constants
         }
 
         /// <summary>
@@ -39,20 +39,33 @@ namespace Entities.Devices.ColorGate {
         /// </summary>
         private void SetupColorDetectionZone() {
             _colorDetectionZone = gameObject.AddComponent<BoxCollider>();
-            _colorDetectionZone.center = new Vector3(0f, 1.0f, -0.5f);
-            _colorDetectionZone.size = new Vector3(1f, 2f, 1f);
+            _colorDetectionZone.center = new Vector3(0f, 1.0f, -0.5f); // TODO: Magic Constants
+            _colorDetectionZone.size = new Vector3(1f, 2f, 1f); // TODO: Magic Constants
             _colorDetectionZone.isTrigger = true;
         }
 
+        /// <summary>
+        /// Play the animation for opening the BoxCollider iff
+        /// the player is the correct color.
+        /// </summary>
+        /// <param name="other"></param>
         private void OnTriggerEnter(Collider other) {
-            if (other.CompareTag("Player")) {
-                var omat = other.GetComponentInChildren<SkinnedMeshRenderer>().material;
-                if (omat.color == ExpectedMaterial.color) {
-                    _animation = GetComponent<Animation>();
-                    _animation.Play("Ascend", PlayMode.StopAll);
-                    _animation.
-                }
+            if (!other.CompareTag("Player")) return;
+            var omat = other.GetComponentInChildren<SkinnedMeshRenderer>().material;
+            if (omat.color == ExpectedMaterial.color) {
+                //_animation["Ascend"].normalizedTime = 1.0f;
+                //_animation["Ascend"].speed = 1.0f;
+                //_animation.Play("Ascend", PlayMode.StopAll);
             }
+        }
+
+        private void OnTriggerExit(Collider other) {
+            if (!other.CompareTag("Player")) return;
+            Debug.Log(_animation["Ascend"].time);
+            _animation["Ascend"].normalizedTime = 1.0f;
+            _animation["Ascend"].speed *= -1.0f;
+            //_animation.CrossFade("Ascend");
+            _animation.Play("Ascend", PlayMode.StopAll);
         }
         
     }
