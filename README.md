@@ -5,4 +5,4 @@ objective of the game is to interact with a variety of devices and
 gameplay mechanics to reach the end of each level. The game is a work
 in progress at the moment.
 
-![](media/001.png)
+![](Media/001.png)
