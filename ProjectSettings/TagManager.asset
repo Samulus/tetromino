@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Laser
   - Crate
+  - PickUp
   layers:
   - Default
   - TransparentFX

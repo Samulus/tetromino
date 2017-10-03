@@ -2,49 +2,92 @@
 	ItemPickupZone.cs
 	Author: Samuel Vargas
 	
-	The ItemPickupZone generates a BoxCollider infront 
-	of the player at their waist height. Two BoxColliders
-	are placed directly on top of each other to determine
-	if the player is allowed to pick up an object.
+	This module creates two BoxColliders on top of each other. 
+	The BoxColliders are used in conjunction with each other to
+	determine if the player is allowed to pick up an object infront 
+	of them.
 	
+	(Objects with overhead obstructions cannot be picked up by the player).
 */
 
 using UnityEngine;
 
-public class ItemPickupZone : MonoBehaviour {
-  private BoxCollider _topCollider, _bottomCollider;
-  private GameObject _top, _bottom;
-  private bool _canPickUpItem;
+namespace Entities.Player {
 
-  private void Start() {
-    _top = new GameObject();
-    _top.transform.SetParent(transform, false);
-    _top.name = "TopObjectZone";
-    _bottom = new GameObject();
-    _bottom.transform.SetParent(transform, false);
-    _bottom.name = "BottomObjectZone";
+    public class ItemPickupZone : MonoBehaviour {
+        private ObstructionChecker _obstructionChecker;
+        private PickupChecker _pickupChecker;
 
-    var g = gameObject;
-    _top = Zone.CreateAndAddAsChild("TopObjectZone", new Vector3(0f, 0.5f, 0.4f), new Vector3(0.5f, 1.5f, 0.25f), g);
-    _bottom = Zone.CreateAndAddAsChild("BottomObjectZone", new Vector3(0f, 0.5f, 0.4f), new Vector3(0.5f, 1f, 0.25f), g);
+        private void Start() {
+            var g = gameObject;
+            _obstructionChecker = ObstructionChecker.CreateAndAddAsChild(ref g);
+            _pickupChecker = PickupChecker.CreateAndAddAsChild(ref g);
+        }
 
-    _topCollider = _top.AddComponent<BoxCollider>();
-    _topCollider.center = new Vector3(0f, 0.5f, 0.4f); // TODO: Magic Constants
-    _topCollider.size = new Vector3(0.5f, 1.5f, 0.25f); // TODO: Magic Constants
-    _topCollider.isTrigger = true;
+        public bool CanPickupItem() {
+            return !_obstructionChecker.IsObstructionPresent() &&
+                   _pickupChecker.IsPickUpPresent();
+        }
 
-    _bottomCollider = _bottom.AddComponent<BoxCollider>();
-    _bottomCollider.center = new Vector3(0f, 0.5f, 0.4f); // TODO: Magic Constants
-    _bottomCollider.size = new Vector3(0.5f, 1f, 0.25f); // TODO: Magic Constants
-    _canPickUpItem = false;
-  }
+        private class ObstructionChecker : MonoBehaviour {
+            private bool _isObstructionPresent;
+            private static readonly Vector3 Center = new Vector3(0f, 1.5f, 0.4f); // TODO: Magic Constants
+            private static readonly Vector3 Size = new Vector3(0.5f, 1f, 0.25f); // TODO: Magic Constants 
 
-  private class Zone : MonoBehaviour {
-    private GameObject _gameObject;
+            public static ObstructionChecker CreateAndAddAsChild(ref GameObject g) {
+                var gameObject = new GameObject();
+                gameObject.transform.SetParent(g.transform, false);
+                gameObject.name = typeof(ObstructionChecker).Name;
+                var collider = gameObject.AddComponent<BoxCollider>();
+                collider.center = Center;
+                collider.size = Size;
+                collider.isTrigger = true;
+                return gameObject.AddComponent<ObstructionChecker>();
+            }
 
-    public static GameObject CreateAndAddAsChild(string name, Vector3 size, Vector3 center, ref GameObject g) {
-    _gameObject = new GameObject();
-    _gameObject.transform.SetParent(transform, false);
+            private void OnTriggerEnter(Collider other) {
+                _isObstructionPresent = true;
+            }
+
+            private void OnTriggerExit(Collider other) {
+                _isObstructionPresent = false;
+            }
+
+            public bool IsObstructionPresent() {
+                return _isObstructionPresent;
+            }
+        }
+
+        private class PickupChecker : MonoBehaviour {
+            private static readonly Vector3 Center = new Vector3(0f, 0.5f, 0.4f); // TODO: Magic Constants
+            private static readonly Vector3 Size = new Vector3(0.5f, 1f, 0.25f); // TODO: Magic Constants 
+            private bool _isPickUpPresent;
+
+            public static PickupChecker CreateAndAddAsChild(ref GameObject g) {
+                var gameObject = new GameObject();
+                gameObject.transform.SetParent(g.transform, false);
+                gameObject.name = typeof(PickupChecker).Name;
+                var collider = gameObject.AddComponent<BoxCollider>();
+                collider.center = Center;
+                collider.size = Size;
+                collider.isTrigger = true;
+                return gameObject.AddComponent<PickupChecker>();
+            }
+
+            private void OnTriggerEnter(Collider other) {
+                if (!other.CompareTag("PickUp")) return;
+                _isPickUpPresent = true;
+            }
+
+            private void OnTriggerExit(Collider other) {
+                if (!other.CompareTag("PickUp")) return;
+                _isPickUpPresent = false;
+            }
+
+            public bool IsPickUpPresent() {
+                return _isPickUpPresent;
+            }
+        }
     }
-  }
+
 }
