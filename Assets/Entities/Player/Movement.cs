@@ -21,9 +21,11 @@ namespace Player {
 
         private void Update() {
             // Avoid moving if our instance isn't active.
+            /*
             if (!_state.IsActive()) {
                 return;
             }
+            */
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime;
             if (x != 0.0f) {
@@ -39,10 +41,7 @@ namespace Player {
             if (x == 0.0f && z == 0.0f) {
                 _animation.Play("Idle", PlayMode.StopAll);
             }
-            PickupAnimation();
-        }
-
-        private void PickupAnimation() {
+            
             if (Input.GetKey("space")) {
                 _animation.Play("PickUp", PlayMode.StopAll);
             }
