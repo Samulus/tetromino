@@ -8,16 +8,21 @@ namespace Player {
         private CliffDetect _cliffDetect;
 
         private void Awake() {
+            /*
             _animation = GetComponent<Animation>();
             _characterController = GetComponent<CharacterController>();
             _cliffDetect = GetComponent<CliffDetect>();
+            */
         }
 
         private void Start() {
+            /*
             _animation.Play("Idle", PlayMode.StopAll);
+            */
         }
 
         private void Update() {
+            /*
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime;
             if (x != 0.0f) {
@@ -37,6 +42,7 @@ namespace Player {
             if (Input.GetKey("space")) {
                 _animation.Play("PickUp", PlayMode.StopAll);
             }
+            */
         }
     }
 
