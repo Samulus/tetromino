@@ -8,10 +8,10 @@ using UnityEngine;
 namespace Entities.Player.States {
   public class Idling : FiniteStateMonoBehaviour {
     private FiniteStateMachine _finiteStateMachine;
-    private Animation _animation;
+    //private Animation _animation;
 
     public override void Enter() {
-      _animation.CrossFade("Idle");
+      //_animation.CrossFade("Idle");
     }
 
     public override void Exit() {
@@ -19,7 +19,7 @@ namespace Entities.Player.States {
 
     private void Start() {
       _finiteStateMachine = GetComponentInParent<FiniteStateMachine>();
-      _animation = GetComponentInParent<Animation>();
+      //_animation = GetComponentInParent<Animation>();
     }
 
     private void Update() {
