@@ -7,14 +7,6 @@ namespace Player {
         private CharacterController _characterController;
         private CliffDetect _cliffDetect;
 
-        private void Awake() {
-            /*
-            _animation = GetComponent<Animation>();
-            _characterController = GetComponent<CharacterController>();
-            _cliffDetect = GetComponent<CliffDetect>();
-            */
-        }
-
         private void Start() {
             /*
             _animation.Play("Idle", PlayMode.StopAll);
