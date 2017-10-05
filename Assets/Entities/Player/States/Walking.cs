@@ -43,6 +43,7 @@ namespace Entities.Player.States {
       if (!_cliffDetect.IsCliffInfront()) {
         var forward = transform.root.TransformDirection(Vector3.forward);
         _characterController.Move(forward * Time.deltaTime);
+        _characterController.SimpleMove(Vector3.zero);
         //_animation.CrossFade("Walk");
       }
     }
