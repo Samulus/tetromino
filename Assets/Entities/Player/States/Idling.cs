@@ -34,10 +34,10 @@ namespace Entities.Player.States {
       //transform.root.Rotate(0, x, 0);
       // Rotate inplace
       if (x > float.Epsilon) {
-        _animator.Play("RotateRight");
+        //_animator.Play("RotateRight");
       }
       else if (x < -float.Epsilon) {
-        _animator.Play("RotateLeft");
+        //_animator.Play("RotateLeft");
       }
     }
   }
