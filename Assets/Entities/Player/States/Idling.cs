@@ -18,7 +18,7 @@ namespace Entities.Player.States {
 
     private void Start() {
       _finiteStateMachine = GetComponentInParent<FiniteStateMachine>();
-      _animator = GetComponentInParent<Animator>();
+      _animator = transform.root.GetComponentInChildren<Animator>();
     }
 
     private void Update() {
@@ -30,7 +30,8 @@ namespace Entities.Player.States {
 
       var x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
 
-      //transform.root.Rotate(0, x, 0);
+      transform.root.Rotate(0, x, 0);
+      
       // Rotate inplace
       if (x > float.Epsilon) {
         //_animator.Play("RotateRight");

@@ -20,8 +20,8 @@ namespace Entities.Player.States {
     }
 
     private void Start() {
-      _finiteStateMachine = GetComponentInParent<FiniteStateMachine>();
-      _animator = GetComponentInParent<Animator>();
+      _finiteStateMachine = transform.root.GetComponentInChildren<FiniteStateMachine>();
+      _animator = transform.root.GetComponentInChildren<Animator>();
       _characterController = GetComponentInParent<CharacterController>();
       _cliffDetect = GetComponentInParent<CliffDetect>();
     }
