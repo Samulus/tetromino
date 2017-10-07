@@ -38,13 +38,13 @@ namespace Entities.Player.States {
         return;
       }
 
-      //transform.root.Rotate(0, x, 0);
+      transform.root.Rotate(0, x, 0);
 
       if (!_cliffDetect.IsCliffInfront()) {
         var forward = transform.root.TransformDirection(Vector3.forward);
         _characterController.Move(forward * Time.deltaTime);
         _characterController.SimpleMove(Vector3.zero);
-         //_animator.Play("Walk");
+        _animator.SetTrigger("Walk");
       }
     }
   }

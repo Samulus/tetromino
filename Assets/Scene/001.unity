@@ -2193,6 +2193,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 611555945}
+  - component: {fileID: 611555946}
   m_Layer: 0
   m_Name: COG
   m_TagString: Untagged
@@ -2215,6 +2216,23 @@ Transform:
   m_Father: {fileID: 234394874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &611555946
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 611555944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 73959102fd451b047973daa6ae791cc9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 544f08b777da5644bbeda46e11e17444, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &620550570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2588,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 678226719}
-  - component: {fileID: 678226718}
   - component: {fileID: 678226716}
   - component: {fileID: 678226714}
   - component: {fileID: 678226712}
@@ -2644,24 +2661,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!95 &678226718
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 73959102fd451b047973daa6ae791cc9,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 678226711}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 73959102fd451b047973daa6ae791cc9, type: 3}
-  m_Controller: {fileID: 9100000, guid: 544f08b777da5644bbeda46e11e17444, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &678226719
 Transform:
   m_ObjectHideFlags: 0

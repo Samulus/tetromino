@@ -22,7 +22,6 @@ namespace Entities.Player.States {
     }
 
     private void Update() {
-      //_animator.Play("Walk");
       if (!_finiteStateMachine.IsActive(this)) return;
 
       if (Mathf.Abs(Input.GetAxis("Vertical")) > float.Epsilon) {
