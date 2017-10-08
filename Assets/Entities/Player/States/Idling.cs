@@ -8,10 +8,10 @@ using UnityEngine;
 namespace Entities.Player.States {
   public class Idling : FiniteStateMonoBehaviour {
     private FiniteStateMachine _finiteStateMachine;
-    private Animation _animation;
+    private Animator _animator;
 
     public override void Enter() {
-      _animation.CrossFade("Idle");
+      _animator.SetTrigger("Idle");
     }
 
     public override void Exit() {
@@ -19,7 +19,7 @@ namespace Entities.Player.States {
 
     private void Start() {
       _finiteStateMachine = GetComponentInParent<FiniteStateMachine>();
-      _animation = GetComponentInParent<Animation>();
+      _animator = transform.root.GetComponentInChildren<Animator>();
     }
 
     private void Update() {
@@ -31,9 +31,14 @@ namespace Entities.Player.States {
 
       var x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
 
+      transform.root.Rotate(0, x, 0);
+      
       // Rotate inplace
-      if (Mathf.Abs(x) > float.Epsilon) {
-        transform.parent.parent.Rotate(0, x, 0);
+      if (x > float.Epsilon) {
+        //_animator.Play("RotateRight");
+      }
+      else if (x < -float.Epsilon) {
+        //_animator.Play("RotateLeft");
       }
     }
   }

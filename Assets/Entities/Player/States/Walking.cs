@@ -9,19 +9,20 @@ using UnityEngine;
 namespace Entities.Player.States {
   public class Walking : FiniteStateMonoBehaviour {
     private FiniteStateMachine _finiteStateMachine;
-    private Animation _animation;
+    private Animator _animator;
     private CharacterController _characterController;
     private CliffDetect _cliffDetect;
 
     public override void Enter() {
+      _animator.SetTrigger("Walk");
     }
 
     public override void Exit() {
     }
 
     private void Start() {
-      _finiteStateMachine = GetComponentInParent<FiniteStateMachine>();
-      _animation = GetComponentInParent<Animation>();
+      _finiteStateMachine = transform.root.GetComponentInChildren<FiniteStateMachine>();
+      _animator = transform.root.GetComponentInChildren<Animator>();
       _characterController = GetComponentInParent<CharacterController>();
       _cliffDetect = GetComponentInParent<CliffDetect>();
     }
@@ -38,12 +39,13 @@ namespace Entities.Player.States {
         return;
       }
 
-      transform.parent.parent.Rotate(0, x, 0);
+      transform.root.Rotate(0, x, 0);
 
       if (!_cliffDetect.IsCliffInfront()) {
-        var forward = transform.TransformDirection(Vector3.forward);
-        _characterController.SimpleMove(forward * 1.5f);
-        _animation.CrossFade("Walk");
+        var forward = transform.root.TransformDirection(Vector3.forward);
+        _characterController.Move(forward * Time.deltaTime);
+        _characterController.SimpleMove(Vector3.zero);
+        //_animator.SetTrigger("Walk");
       }
     }
   }
