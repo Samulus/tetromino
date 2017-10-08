@@ -20,7 +20,7 @@ namespace Entities.Player.States {
     public override void Exit() {
     }
 
-    private void Start() {
+    protected void Awake() {
       _finiteStateMachine = transform.root.GetComponentInChildren<FiniteStateMachine>();
       _animator = transform.root.GetComponentInChildren<Animator>();
       _characterController = GetComponentInParent<CharacterController>();
@@ -28,7 +28,6 @@ namespace Entities.Player.States {
     }
 
     private void Update() {
-      if (!_finiteStateMachine.IsActive(this)) return;
       var x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
       var z = Input.GetAxis("Vertical") * Time.deltaTime;
 

@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Entities.Player.States {
-  
   public abstract class FiniteStateMonoBehaviour : MonoBehaviour {
     public abstract void Enter();
     public abstract void Exit();
@@ -16,38 +15,42 @@ namespace Entities.Player.States {
   public class FiniteStateMachine : MonoBehaviour {
     private Dictionary<string, FiniteStateMonoBehaviour> _stateTable;
     private FiniteStateMonoBehaviour _activeState;
-    private GameObject _stateEmpty;
 
     private void Awake() {
-      _stateEmpty = new GameObject {name = typeof(FiniteStateMachine).Name};
-      _stateEmpty.transform.SetParent(transform, false);
+      var stateEmpty = new GameObject {name = typeof(FiniteStateMachine).Name};
+      stateEmpty.transform.SetParent(transform, false);
 
-      // The Reflection idiom here allows child classes to call ChangeState with the
-      // name of the state they intend to switch to.
+      // Setup states, use the classname reflection idiom to refer to a specific state
       _stateTable = new Dictionary<string, FiniteStateMonoBehaviour>();
-      _stateTable[typeof(Idling).Name] = CreateAndAddChildState<Idling>(ref _stateEmpty);
-      _stateTable[typeof(Walking).Name] = CreateAndAddChildState<Walking>(ref _stateEmpty);
+      _stateTable[typeof(Idling).Name] = CreateAndAddDisabledChildState<Idling>(ref stateEmpty);
+      _stateTable[typeof(Walking).Name] = CreateAndAddDisabledChildState<Walking>(ref stateEmpty);
+      _stateTable[typeof(PickUp).Name] = CreateAndAddDisabledChildState<PickUp>(ref stateEmpty);
 
-      // 'Idling' is always the default state.
+      // Set & enable default state 
       _activeState = _stateTable[typeof(Idling).Name];
+      _activeState.enabled = true;
     }
 
     public void ChangeState(string state) {
       Debug.Assert(_stateTable.ContainsKey(state));
       _activeState.Exit();
+      _activeState.enabled = false;
       _activeState = _stateTable[state];
+      _activeState.enabled = true;
       _activeState.Enter();
     }
 
     public bool IsActive(FiniteStateMonoBehaviour state) {
       return _activeState == state;
     }
-    
-    private static T CreateAndAddChildState<T>(ref GameObject g)
+
+    private static T CreateAndAddDisabledChildState<T>(ref GameObject g)
       where T : FiniteStateMonoBehaviour {
       var empty = new GameObject {name = typeof(T).Name};
       empty.transform.SetParent(g.transform, false);
-      return empty.AddComponent<T>();
+      var c = empty.AddComponent<T>();
+      c.enabled = false;
+      return c;
     }
   }
 }
