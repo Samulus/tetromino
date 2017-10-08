@@ -11,6 +11,7 @@ namespace Entities.Player.States {
     private Animator _animator;
 
     public override void Enter() {
+      _animator.SetTrigger("Idle");
     }
 
     public override void Exit() {

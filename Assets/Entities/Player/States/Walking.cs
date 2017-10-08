@@ -14,6 +14,7 @@ namespace Entities.Player.States {
     private CliffDetect _cliffDetect;
 
     public override void Enter() {
+      _animator.SetTrigger("Walk");
     }
 
     public override void Exit() {
@@ -44,7 +45,7 @@ namespace Entities.Player.States {
         var forward = transform.root.TransformDirection(Vector3.forward);
         _characterController.Move(forward * Time.deltaTime);
         _characterController.SimpleMove(Vector3.zero);
-        _animator.SetTrigger("Walk");
+        //_animator.SetTrigger("Walk");
       }
     }
   }
