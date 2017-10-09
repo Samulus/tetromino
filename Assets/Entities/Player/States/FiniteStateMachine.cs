@@ -16,7 +16,7 @@ namespace Entities.Player.States {
     private Dictionary<string, FiniteStateMonoBehaviour> _stateTable;
     private FiniteStateMonoBehaviour _activeState;
 
-    private void Awake() {
+    private void Start() {
       var stateEmpty = new GameObject {name = typeof(FiniteStateMachine).Name};
       stateEmpty.transform.SetParent(transform, false);
 
@@ -24,7 +24,6 @@ namespace Entities.Player.States {
       _stateTable = new Dictionary<string, FiniteStateMonoBehaviour>();
       _stateTable[typeof(Idling).Name] = CreateAndAddDisabledChildState<Idling>(ref stateEmpty);
       _stateTable[typeof(Walking).Name] = CreateAndAddDisabledChildState<Walking>(ref stateEmpty);
-      _stateTable[typeof(PickUp).Name] = CreateAndAddDisabledChildState<PickUp>(ref stateEmpty);
 
       // Set & enable default state 
       _activeState = _stateTable[typeof(Idling).Name];

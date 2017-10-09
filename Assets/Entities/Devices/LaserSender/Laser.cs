@@ -9,17 +9,19 @@
 */
 
 using System;
+using Entities.Devices.LaserSender;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class Laser : MonoBehaviour {
   public Material LaserMaterial;
+  public LaserColors color;
   private LineRenderer _lineRenderer;
   private const float Width = 0.25f;
   private const float MaxDistance = 100.0f;
   private Vector3 _laserPseudoIndefiniteEnd;
   private BoxCollider _laserCollider;
-  private const int ZAxis = 2;
+
 
   private void Start() {
     // Setup laser properties

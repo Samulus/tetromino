@@ -3,12 +3,16 @@
   Author: Samuel Vargas
 */
 
+using Entities.Player.Sensors;
 using UnityEngine;
 
 namespace Entities.Player.States {
   public class Idling : FiniteStateMonoBehaviour {
     private FiniteStateMachine _finiteStateMachine;
     private Animator _animator;
+    private ItemPickupZone _itemPickupZone;
+    private ObstructionPickupZone _obstructionPickupZone;
+    private Inventory.Inventory _inventory;
 
     public override void Enter() {
       _animator.SetTrigger("Idle");
@@ -18,13 +22,16 @@ namespace Entities.Player.States {
     }
 
     private void Start() {
-      _finiteStateMachine = GetComponentInParent<FiniteStateMachine>();
+      _finiteStateMachine = transform.root.GetComponentInChildren<FiniteStateMachine>();
       _animator = transform.root.GetComponentInChildren<Animator>();
+      _itemPickupZone = transform.root.GetComponentInChildren<ItemPickupZone>();
+      _obstructionPickupZone = transform.root.GetComponentInChildren<ObstructionPickupZone>();
+      _inventory = transform.root.GetComponentInChildren<Inventory.Inventory>();
     }
 
     private void Update() {
+      PickUpIfRequested();
       MaybeTransitionToWalking();
-      MaybeTransitionToPickUp();
     }
 
     private void MaybeTransitionToWalking() {
@@ -36,13 +43,23 @@ namespace Entities.Player.States {
       transform.root.Rotate(0, x, 0);
     }
 
-    private void MaybeTransitionToPickUp() {
-      var pickUp = transform.root.GetComponentInChildren<ItemPickupZone>();
-      if (Input.GetKeyDown("space")) {
-        Debug.Log(pickUp.CanPickupItem());
+    private void PickUpIfRequested() {
+      var spacePressed = Input.GetKeyDown("space");
+      if (!spacePressed) return;
+
+      // Drop held item
+      if (_inventory.HasItem()) {
+        _inventory.DropItem();
+        return;
       }
-      if (Input.GetKeyDown("space") && pickUp.CanPickupItem()) {
-        pickUp.PickUpItem();
+
+      var isObstructionPresent = _obstructionPickupZone.IsObstructionPresent();
+      var isPickupPresent = _itemPickupZone.IsPickUpPresent();
+
+      // Pickup a new item.
+      if (!isObstructionPresent && isPickupPresent) {
+        var item = _itemPickupZone.GetPickUp();
+        _inventory.AddItem(item);
       }
     }
   }
