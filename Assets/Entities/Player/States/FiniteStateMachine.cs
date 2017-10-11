@@ -17,13 +17,11 @@ namespace Entities.Player.States {
     private FiniteStateMonoBehaviour _activeState;
 
     private void Start() {
-      var stateEmpty = new GameObject {name = typeof(FiniteStateMachine).Name};
-      stateEmpty.transform.SetParent(transform, false);
-
       // Setup states, use the classname reflection idiom to refer to a specific state
+      var t = gameObject;
       _stateTable = new Dictionary<string, FiniteStateMonoBehaviour>();
-      _stateTable[typeof(Idling).Name] = CreateAndAddDisabledChildState<Idling>(ref stateEmpty);
-      _stateTable[typeof(Walking).Name] = CreateAndAddDisabledChildState<Walking>(ref stateEmpty);
+      _stateTable[typeof(Idling).Name] = CreateAndAddDisabledChildState<Idling>(ref t);
+      _stateTable[typeof(Walking).Name] = CreateAndAddDisabledChildState<Walking>(ref t);
 
       // Set & enable default state 
       _activeState = _stateTable[typeof(Idling).Name];

@@ -4,6 +4,7 @@
  */
 
 using UnityEngine;
+using Util;
 
 namespace Entities.Devices.ColorChanger {
   public class InputLaserReceptor : MonoBehaviour {
@@ -15,13 +16,23 @@ namespace Entities.Devices.ColorChanger {
       _inputLaserReceptor = empty.AddComponent<__InputLaserReceptor>();
     }
 
+    public ColorsEnumerationMap.TetrominoColor GetColor() {
+      return _inputLaserReceptor.GetColor();
+    }
+
     private class __InputLaserReceptor : MonoBehaviour {
+      private ColorsEnumerationMap.TetrominoColor _color;
       private Material _laserMaterial;
       private BoxCollider _boxCollider;
       private Rigidbody _rigidbody;
-      private ColorChanger _colorChanger;
+      private HumanColorChamber _humanColorChamber;
+
+      public ColorsEnumerationMap.TetrominoColor GetColor() {
+        return _color;
+      }
 
       private void Start() {
+        _humanColorChamber = GetComponentInParent<HumanColorChamber>();
         _rigidbody = gameObject.AddComponent<Rigidbody>();
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         _rigidbody.isKinematic = true;
@@ -33,14 +44,14 @@ namespace Entities.Devices.ColorChanger {
 
       private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("Laser")) return;
-        _laserMaterial = other.GetComponent<Laser>().LaserMaterial;
-        //_colorChanger.OnLaserReceptorEnter(other);
+        _color = other.GetComponent<Laser>().GetColor();
+        _humanColorChamber.TriggerColorChamberRepaint();
       }
 
       private void OnTriggerExit(Collider other) {
         if (!other.CompareTag("Laser")) return;
-        _laserMaterial = null;
-        //_colorChanger.OnLaserReceptorExit(other);
+        _color = ColorsEnumerationMap.TetrominoColor.NoColor;
+        _humanColorChamber.TriggerColorChamberRepaint();
       }
     }
   }

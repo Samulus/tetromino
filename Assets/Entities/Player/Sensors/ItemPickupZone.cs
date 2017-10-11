@@ -26,7 +26,7 @@ namespace Entities.Player.Sensors {
     private class __ItemPickUpZone : MonoBehaviour {
       private static readonly Vector3 Center = new Vector3(0f, 0.5f, 0.4f);
       private static readonly Vector3 Size = new Vector3(0.5f, 1f, 0.25f);
-      private bool _isPickUpPresent = true;
+      private bool _isPickUpPresent;
       private GameObject _potentialPickUp;
 
       private void Start() {

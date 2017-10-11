@@ -1,34 +1,35 @@
 ﻿/*
 	Laser.cs
 	Author: Samuel Vargas
-	
-	This behavior instantiates a laser (LineRenderer) starting from
-	the origin of the object it's attached to. It renders a laser
-	with the perception of extending indefinitely unless it hits
-	any type of Object collider.
 */
 
 using System;
-using Entities.Devices.LaserSender;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Util;
 
 public class Laser : MonoBehaviour {
-  public Material LaserMaterial;
-  public LaserColors color;
+  public ColorsEnumerationMap.TetrominoColor LaserColor;
   private LineRenderer _lineRenderer;
   private const float Width = 0.25f;
   private const float MaxDistance = 100.0f;
   private Vector3 _laserPseudoIndefiniteEnd;
   private BoxCollider _laserCollider;
-
-
+  private Material _laserMaterial;
+  
+  public ColorsEnumerationMap.TetrominoColor GetColor() {
+    return LaserColor;
+  }
+  
   private void Start() {
+    _laserMaterial = GameObject.Find("Util").GetComponentInChildren<ColorsEnumerationMap>()
+      .GetMaterialFromColor(LaserColor);
+
     // Setup laser properties
     _lineRenderer = gameObject.AddComponent<LineRenderer>();
     _lineRenderer.startWidth = Width;
     _lineRenderer.endWidth = Width;
-    _lineRenderer.material = LaserMaterial;
+    _lineRenderer.material = _laserMaterial;
     _lineRenderer.shadowCastingMode = ShadowCastingMode.On;
 
     // Setup start and end of laser
@@ -75,4 +76,5 @@ public class Laser : MonoBehaviour {
     point = hit.point;
     return true;
   }
+
 }
