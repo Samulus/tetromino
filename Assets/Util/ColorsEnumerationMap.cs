@@ -39,7 +39,7 @@ namespace Util {
     }
 
     public Material GetMaterialFromColor(TetrominoColor color) {
-      Debug.Assert(_colorTable.ContainsKey(color));
+      Debug.Assert(_colorTable.ContainsKey(color), string.Format("Key {0} is missing", color));
       return _colorTable[color];
     }
   }

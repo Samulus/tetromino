@@ -2269,7 +2269,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 697413350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.51, y: 2, z: 1.27}
+  m_LocalPosition: {x: -0.49, y: 1, z: 1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 702411532}
@@ -2940,11 +2940,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92e89711c62f5f746ac421f51fd03ea6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92e89711c62f5f746ac421f51fd03ea6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.14
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92e89711c62f5f746ac421f51fd03ea6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4211,6 +4211,7 @@ GameObject:
   - component: {fileID: 1235045339}
   - component: {fileID: 1235045343}
   - component: {fileID: 1235045344}
+  - component: {fileID: 1235045346}
   m_Layer: 0
   m_Name: ColorChanger
   m_TagString: Untagged
@@ -4320,6 +4321,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be79a71ac06e474483ec886aac0bc126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1235045346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235045338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0754bf3d6cc40528db728901f2dc875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1270183147
@@ -4491,7 +4503,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92e89711c62f5f746ac421f51fd03ea6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.14
+      value: 2.1400003
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92e89711c62f5f746ac421f51fd03ea6, type: 3}
       propertyPath: m_LocalRotation.x

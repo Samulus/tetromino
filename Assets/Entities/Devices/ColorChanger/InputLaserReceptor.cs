@@ -25,14 +25,14 @@ namespace Entities.Devices.ColorChanger {
       private Material _laserMaterial;
       private BoxCollider _boxCollider;
       private Rigidbody _rigidbody;
-      private HumanColorChamber _humanColorChamber;
+      private ExteriorColorChanger _exteriorColorChanger;
 
       public ColorsEnumerationMap.TetrominoColor GetColor() {
         return _color;
       }
-
+      
       private void Start() {
-        _humanColorChamber = GetComponentInParent<HumanColorChamber>();
+        _exteriorColorChanger = GetComponentInParent<ExteriorColorChanger>();
         _rigidbody = gameObject.AddComponent<Rigidbody>();
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         _rigidbody.isKinematic = true;
@@ -45,13 +45,13 @@ namespace Entities.Devices.ColorChanger {
       private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("Laser")) return;
         _color = other.GetComponent<Laser>().GetColor();
-        _humanColorChamber.TriggerColorChamberRepaint();
+        _exteriorColorChanger.TriggerExteriorRepaint();
       }
 
       private void OnTriggerExit(Collider other) {
         if (!other.CompareTag("Laser")) return;
         _color = ColorsEnumerationMap.TetrominoColor.NoColor;
-        _humanColorChamber.TriggerColorChamberRepaint();
+        _exteriorColorChanger.TriggerExteriorRepaint();
       }
     }
   }
