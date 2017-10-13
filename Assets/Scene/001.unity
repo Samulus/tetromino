@@ -260,7 +260,7 @@ BoxCollider:
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: 8f1667437ab4a6f4fb3aad65e21e9a25, type: 3}
   m_PrefabInternal: {fileID: 1046801170}
---- !u!114 &91162613
+--- !u!114 &91162612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -268,10 +268,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 91162611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32bd609a1e65b14f81a93445c6ca0a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 971ffa46e31b4e94abc054c5f64db122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExpectedMaterial: {fileID: 2100000, guid: 83136482eb74be44a947dd85cce4eb9d, type: 2}
+  RequiredColor: 3
 --- !u!1001 &95837710
 Prefab:
   m_ObjectHideFlags: 0

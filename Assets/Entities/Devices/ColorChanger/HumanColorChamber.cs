@@ -6,6 +6,7 @@
   the player enters the collider.
 */
 
+using Entities.Player.Information;
 using UnityEngine;
 using Util;
 
@@ -20,7 +21,7 @@ namespace Entities.Devices.ColorChanger {
     private class HumanColorChamberInternal : MonoBehaviour {
       private InputLaserReceptor _inputLaserReceptor;
       private OutputLaserReceptor _outputLaserReceptor;
-      private ColorSwitcher _playerColorSwitcher;
+      private ColorManipulator _playerColorManipulator;
 
       public void Start() {
         SetupCollider();
@@ -37,7 +38,7 @@ namespace Entities.Devices.ColorChanger {
       private void SetupComponents() {
         _inputLaserReceptor = GetComponentInParent<InputLaserReceptor>();
         _outputLaserReceptor = GetComponentInParent<OutputLaserReceptor>();
-        _playerColorSwitcher = GameObject.Find("Player").GetComponentInChildren<ColorSwitcher>();
+        _playerColorManipulator = GameObject.Find("Player").GetComponentInChildren<ColorManipulator>();
       }
 
       private void OnTriggerEnter(Collider other) {
@@ -45,12 +46,12 @@ namespace Entities.Devices.ColorChanger {
 
         if (_inputLaserReceptor.GetColor() == ColorsEnumerationMap.TetrominoColor.NoColor ||
             _outputLaserReceptor.GetColor() == ColorsEnumerationMap.TetrominoColor.NoColor) {
-          _playerColorSwitcher.ClearColor();
+          _playerColorManipulator.ClearColor();
         }
 
         else if (_inputLaserReceptor.GetColor() != ColorsEnumerationMap.TetrominoColor.NoColor &&
                  _outputLaserReceptor.GetColor() != ColorsEnumerationMap.TetrominoColor.NoColor) {
-          _playerColorSwitcher.SetColor(_inputLaserReceptor.GetColor());
+          _playerColorManipulator.SetColor(_inputLaserReceptor.GetColor());
         }
       }
     }
