@@ -15,7 +15,7 @@ namespace Entities.Player.States {
     private Inventory.Inventory _inventory;
 
     public override void Enter() {
-      _animator.SetTrigger("Idle");
+      //_animator.SetTrigger("Idle");
     }
 
     public override void Exit() {

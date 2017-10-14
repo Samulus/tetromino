@@ -18,7 +18,7 @@ namespace Entities.Player.States {
     private ObstructionPickupZone _obstructionPickupZone;
 
     public override void Enter() {
-      _animator.SetTrigger("Walk");
+      //_animator.SetTrigger("Walk");
     }
 
     public override void Exit() {
