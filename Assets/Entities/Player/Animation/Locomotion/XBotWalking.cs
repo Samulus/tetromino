@@ -19,6 +19,12 @@ public class XBotWalking : StateMachineBehaviour {
 
   // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
   public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    var x = Input.GetAxis("Horizontal") * Time.deltaTime * 250.0f;
+    animator.transform.root.Rotate(0, x, 0);
+    
+    var forward = animator.transform.root.TransformDirection(Vector3.forward);
+    animator.transform.root.GetComponentInChildren<CharacterController>().Move(forward * Time.deltaTime);
+    animator.transform.root.GetComponentInChildren<CharacterController>().SimpleMove(Vector3.zero);
 
     if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift)) {
       animator.SetBool("isIdle", false);
@@ -30,6 +36,5 @@ public class XBotWalking : StateMachineBehaviour {
       animator.SetBool("isIdle", true);
       animator.SetBool("isWalking", false);
     }
-    
   }
 }
