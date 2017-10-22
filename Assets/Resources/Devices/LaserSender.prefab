@@ -166,11 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086f352fb52647c3a612e18f5eaa818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
-  SensorId: 0
-  AgentId: 0
-  GeometryId: 0
-  DeviceId: 5
+  _type: 0
+  _sensorId: 0
+  _agentId: 0
+  _geometryId: 0
+  _deviceId: 0
+  _pickUpId: 0
 --- !u!114 &114926514047984114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,8 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086f352fb52647c3a612e18f5eaa818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
-  SensorId: 0
-  AgentId: 0
-  GeometryId: 0
-  DeviceId: 0
+  _type: 2
+  _sensorId: 0
+  _agentId: 0
+  _geometryId: 0
+  _deviceId: 0
+  _pickUpId: 0

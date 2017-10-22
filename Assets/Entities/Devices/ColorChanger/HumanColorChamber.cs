@@ -7,6 +7,7 @@
 */
 
 using Entities.Player.Information;
+using Tags;
 using UnityEngine;
 using Util;
 
@@ -24,25 +25,24 @@ namespace Entities.Devices.ColorChanger {
       private ColorManipulator _playerColorManipulator;
 
       public void Start() {
-        SetupCollider();
-        SetupComponents();
-      }
-
-      private void SetupCollider() {
+        // Setup Collider
         var boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.isTrigger = true;
         boxCollider.center = new Vector3(-0.5f, -0.5f, 1.0f);
         boxCollider.size = new Vector3(0.75f, 0.75f, 2.0f);
-      }
-
-      private void SetupComponents() {
+        
+        // Setup Components
         _inputLaserReceptor = GetComponentInParent<InputLaserReceptor>();
         _outputLaserReceptor = GetComponentInParent<OutputLaserReceptor>();
-        _playerColorManipulator = GameObject.Find("Player").GetComponentInChildren<ColorManipulator>();
       }
-
+      
       private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("Player")) return;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
+
+        if (_playerColorManipulator == null) {
+          _playerColorManipulator = other.GetComponentInChildren<ColorManipulator>();
+        }
 
         if (_inputLaserReceptor.GetColor() == ColorsEnumerationMap.TetrominoColor.NoColor ||
             _outputLaserReceptor.GetColor() == ColorsEnumerationMap.TetrominoColor.NoColor) {

@@ -3,9 +3,11 @@
   Author: Samuel Vargas
 */
 
+using Tags;
 using UnityEngine;
 
 namespace Entities.Player.Sensors {
+
   public class ObstructionPickupZone : MonoBehaviour {
     private __ObstructionPickupZone _obstructionPickupZone;
 
@@ -15,7 +17,7 @@ namespace Entities.Player.Sensors {
       empty.name = typeof(__ObstructionPickupZone).Name;
       _obstructionPickupZone = empty.AddComponent<__ObstructionPickupZone>();
     }
-    
+
     public bool IsObstructionPresent() {
       return _obstructionPickupZone.IsObstructionPresent();
     }
@@ -37,14 +39,17 @@ namespace Entities.Player.Sensors {
       }
 
       private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("PickUp")) return;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.PickUp) return;
         _isObstructionPresent = true;
       }
 
       private void OnTriggerExit(Collider other) {
-        if (!other.CompareTag("PickUp")) return;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.PickUp) return;
         _isObstructionPresent = false;
       }
     }
   }
+
 }

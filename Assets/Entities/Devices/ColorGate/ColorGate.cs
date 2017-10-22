@@ -3,9 +3,11 @@
 	Author: Samuel Vargas
 */
 
+using Tags;
 using UnityEngine;
 
 namespace Entities.Devices.ColorGate {
+
   public class ColorGate : MonoBehaviour {
     public Material ExpectedMaterial;
     private BoxCollider _gateCollider;
@@ -49,7 +51,9 @@ namespace Entities.Devices.ColorGate {
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) {
-      if (!other.CompareTag("Player")) return;
+      var objTag = other.GetComponent<Tag>();
+      if (objTag == null || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
+
       var omat = other.GetComponentInChildren<SkinnedMeshRenderer>().material;
       if (omat.color == ExpectedMaterial.color) {
         //_animation["Ascend"].normalizedTime = 1.0f;
@@ -59,11 +63,14 @@ namespace Entities.Devices.ColorGate {
     }
 
     private void OnTriggerExit(Collider other) {
-      if (!other.CompareTag("Player")) return;
+      var objTag = other.GetComponent<Tag>();
+      if (objTag == null || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
+
       _animation["Ascend"].normalizedTime = 1.0f;
       _animation["Ascend"].speed *= -1.0f;
       //_animation.CrossFade("Ascend");
       _animation.Play("Ascend", PlayMode.StopAll);
     }
   }
+
 }

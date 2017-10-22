@@ -3,6 +3,8 @@
   Author: Samuel Vargas
  */
 
+using System;
+using Tags;
 using UnityEngine;
 using Util;
 
@@ -33,9 +35,12 @@ namespace Entities.Devices.ColorChanger {
 
       private void Start() {
         _exteriorColorChanger = GetComponentInParent<ExteriorColorChanger>();
+        // Setup Rigid Body
         _rigidbody = gameObject.AddComponent<Rigidbody>();
         _rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         _rigidbody.isKinematic = true;
+        
+        // Setup Box Collider
         _boxCollider = gameObject.AddComponent<BoxCollider>();
         _boxCollider.isTrigger = true;
         _boxCollider.center = new Vector3(-0.5f, -1.0f, 0.5f);
@@ -43,13 +48,15 @@ namespace Entities.Devices.ColorChanger {
       }
 
       private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("Laser")) return;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId == DeviceId.Laser) return;
         _color = other.GetComponent<Laser>().GetColor();
         _exteriorColorChanger.TriggerExteriorRepaint();
       }
 
       private void OnTriggerExit(Collider other) {
-        if (!other.CompareTag("Laser")) return;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId == DeviceId.Laser) return;
         _color = ColorsEnumerationMap.TetrominoColor.NoColor;
         _exteriorColorChanger.TriggerExteriorRepaint();
       }

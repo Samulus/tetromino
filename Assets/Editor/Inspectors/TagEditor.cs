@@ -15,13 +15,15 @@ namespace Editor.Inspectors {
     private SerializedProperty _serialAgentId;
     private SerializedProperty _serialGeometryId;
     private SerializedProperty _serialDeviceId;
+    private SerializedProperty _serialPickUpId;
 
     private void SetupValues() {
-      _serialType = serializedObject.FindProperty("Type");
-      _serialSensorId = serializedObject.FindProperty("SensorId");
-      _serialAgentId = serializedObject.FindProperty("AgentId");
-      _serialGeometryId = serializedObject.FindProperty("GeometryId");
-      _serialDeviceId = serializedObject.FindProperty("DeviceId");
+      _serialType = serializedObject.FindProperty("_type");
+      _serialSensorId = serializedObject.FindProperty("_sensorId");
+      _serialAgentId = serializedObject.FindProperty("_agentId");
+      _serialGeometryId = serializedObject.FindProperty("_geometryId");
+      _serialDeviceId = serializedObject.FindProperty("_deviceId");
+      _serialPickUpId = serializedObject.FindProperty("_pickUpId");
     }
 
     public override void OnInspectorGUI() {
@@ -29,7 +31,7 @@ namespace Editor.Inspectors {
       serializedObject.Update();
       EditorGUILayout.PropertyField(_serialType);
       switch ((TagType) _serialType.intValue) {
-        case TagType.Agents:
+        case TagType.Agent:
           EditorGUILayout.PropertyField(_serialAgentId);
           break;
         case TagType.Geometry:
@@ -40,6 +42,9 @@ namespace Editor.Inspectors {
           break;
         case TagType.Sensor:
           EditorGUILayout.PropertyField(_serialSensorId);
+          break;
+        case TagType.PickUp:
+          EditorGUILayout.PropertyField(_serialPickUpId);
           break;
       }
       serializedObject.ApplyModifiedProperties();

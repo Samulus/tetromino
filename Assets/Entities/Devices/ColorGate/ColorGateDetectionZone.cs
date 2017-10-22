@@ -7,10 +7,12 @@
 */
 
 using Entities.Player.Information;
+using Tags;
 using UnityEngine;
 using Util;
 
 namespace Entities.Devices.ColorGate {
+
   public class ColorGateDetectionZone : MonoBehaviour {
     public ColorsEnumerationMap.TetrominoColor RequiredColor;
     private __ColorGateDetectionZone _colorGateDetectionZone;
@@ -21,7 +23,7 @@ namespace Entities.Devices.ColorGate {
       _colorGateDetectionZone = empty.AddComponent<__ColorGateDetectionZone>();
       _colorGateDetectionZone.RequiredColor = RequiredColor;
     }
-    
+
     private class __ColorGateDetectionZone : MonoBehaviour {
       public ColorsEnumerationMap.TetrominoColor RequiredColor;
       private BoxCollider _colorDetectionCollider;
@@ -35,15 +37,18 @@ namespace Entities.Devices.ColorGate {
       }
 
       private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("Player")) ;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
         var colorManipulator = other.GetComponentInChildren<ColorManipulator>();
         _isPlayerPresentWithCorrectColor = colorManipulator.GetColor() == RequiredColor;
       }
 
       private void OnTriggerExit(Collider other) {
-        if (!other.CompareTag("Player")) ;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
         _isPlayerPresentWithCorrectColor = false;
       }
     }
   }
+
 }

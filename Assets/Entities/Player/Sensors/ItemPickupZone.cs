@@ -3,9 +3,11 @@
 	Author: Samuel Vargas
 */
 
+using Tags;
 using UnityEngine;
 
 namespace Entities.Player.Sensors {
+
   public class ItemPickupZone : MonoBehaviour {
     private __ItemPickUpZone _itemPickupZone;
 
@@ -46,16 +48,20 @@ namespace Entities.Player.Sensors {
       }
 
       private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("PickUp")) return;
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.PickUp) return;
         _isPickUpPresent = true;
         _potentialPickUp = other.gameObject;
       }
 
       private void OnTriggerExit(Collider other) {
+        var objTag = other.GetComponent<Tag>();
+        if (objTag == null || objTag.Type != TagType.PickUp) return;
         if (_potentialPickUp == null) return;
         _isPickUpPresent = false;
         _potentialPickUp = null;
       }
     }
   }
+
 }
