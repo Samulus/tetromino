@@ -39,5 +39,7 @@ namespace Tags {
     ColorChanger = 1,
     Crate = 2,
     Exit = 3,
+    ColorGate = 4,
+    Laser = 5,
   }
 }

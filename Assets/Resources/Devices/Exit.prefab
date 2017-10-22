@@ -53,9 +53,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4919371297524082}
+  - component: {fileID: 114208579908070622}
+  - component: {fileID: 114160728535182354}
   - component: {fileID: 95540255960425296}
   - component: {fileID: 65577748105071536}
-  - component: {fileID: 114160728535182354}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -222,3 +223,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ced9f030c5bc644da2b5fe0b18c9070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114208579908070622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1737403844666678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086f352fb52647c3a612e18f5eaa818a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
+  SensorId: 0
+  AgentId: 0
+  GeometryId: 0
+  DeviceId: 3

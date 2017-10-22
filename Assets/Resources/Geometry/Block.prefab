@@ -19,9 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4036528363916592}
+  - component: {fileID: 114721102509708162}
   - component: {fileID: 33066848011905964}
   - component: {fileID: 23560986576134694}
   - component: {fileID: 95060623987308056}
+  - component: {fileID: 65740781048262564}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -81,6 +83,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150413744977580}
   m_Mesh: {fileID: 4300000, guid: 6253a0bb719b4c945a4b906154cb2b33, type: 3}
+--- !u!65 &65740781048262564
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150413744977580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 1.0000002}
+  m_Center: {x: -0.5, y: -0.5000001, z: 0.5000001}
 --- !u!95 &95060623987308056
 Animator:
   serializedVersion: 3
@@ -98,3 +112,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114721102509708162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150413744977580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086f352fb52647c3a612e18f5eaa818a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  SensorId: 0
+  AgentId: 0
+  GeometryId: 0
+  DeviceId: 1
