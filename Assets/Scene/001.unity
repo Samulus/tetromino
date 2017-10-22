@@ -3811,11 +3811,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4450285448593840, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4450285448593840, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4450285448593840, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4380,6 +4380,16 @@ Prefab:
     - target: {fileID: 4456744566453806, guid: edd4d9827827c30478d8f271d71ca1fc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 64578799533357840, guid: edd4d9827827c30478d8f271d71ca1fc,
+        type: 2}
+      propertyPath: m_InflateMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64578799533357840, guid: edd4d9827827c30478d8f271d71ca1fc,
+        type: 2}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edd4d9827827c30478d8f271d71ca1fc, type: 2}
