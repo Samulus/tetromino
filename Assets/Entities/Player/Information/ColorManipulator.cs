@@ -3,6 +3,8 @@
 	Author: Samuel Vargas
 */
 
+using System;
+using UnityEditor;
 using UnityEngine;
 using Util;
 
@@ -31,6 +33,10 @@ namespace Entities.Player.Information {
     public void ClearColor() {
       _currentColor = ColorsEnumerationMap.TetrominoColor.NoColor;
       _skinnedMeshRenderer.material = _defaultMaterial;
+    }
+
+    private void OnDrawGizmos() {
+      Handles.Label(transform.root.position, Enum.GetName(typeof(ColorsEnumerationMap.TetrominoColor), _currentColor));
     }
   }
 }

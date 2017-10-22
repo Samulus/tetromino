@@ -16,6 +16,11 @@ namespace Tags {
     [SerializeField] private GeometryId _geometryId;
     [SerializeField] private DeviceId _deviceId;
     [SerializeField] private PickUpId _pickUpId;
+    
+    public TagType GetTagType() {
+      return _type;
+    }
+    
 
     public TagType Type {
       get { return _type; }
@@ -35,6 +40,7 @@ namespace Tags {
         _sensorId = value;
       }
     }
+
 
     public AgentId AgentId {
       get {
@@ -73,6 +79,10 @@ namespace Tags {
           "Set invoked on DeviceId but TagType was: " + Enum.GetName(typeof(TagType), Type));
         _deviceId = value;
       }
+    }
+    
+    public DeviceId GetDeviceId() {
+      return _deviceId;
     }
 
     public PickUpId PickUpId {

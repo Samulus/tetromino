@@ -23,14 +23,14 @@ namespace Entities.Devices.ColorChanger {
     }
     
     private class __OutputLaserReceptor : MonoBehaviour {
-      private ColorsEnumerationMap.TetrominoColor _color;
+      public ColorsEnumerationMap.TetrominoColor Color;
       private Material _laserMaterial;
       private BoxCollider _boxCollider;
       private Rigidbody _rigidbody;
       private ExteriorColorChanger _exteriorColorChanger;
 
       public ColorsEnumerationMap.TetrominoColor GetColor() {
-        return _color;
+        return Color;
       }
 
       private void Start() {
@@ -49,15 +49,15 @@ namespace Entities.Devices.ColorChanger {
 
       private void OnTriggerEnter(Collider other) {
         var objTag = other.GetComponent<Tag>();
-        if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId == DeviceId.Laser) return;
-        _color = other.GetComponent<Laser>().GetColor();
+        if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId != DeviceId.Laser) return;
+        Color = other.GetComponent<Laser>().GetColor();
         _exteriorColorChanger.TriggerExteriorRepaint();
       }
 
       private void OnTriggerExit(Collider other) {
         var objTag = other.GetComponent<Tag>();
-        if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId == DeviceId.Laser) return;
-        _color = ColorsEnumerationMap.TetrominoColor.NoColor;
+        if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId != DeviceId.Laser) return;
+        Color = ColorsEnumerationMap.TetrominoColor.NoColor;
         _exteriorColorChanger.TriggerExteriorRepaint();
       }
     }
