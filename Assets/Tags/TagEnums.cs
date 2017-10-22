@@ -1,82 +1,43 @@
 ﻿/*
  * TagEnums.cs
  * Author: Samuel Vargas
- *
- * Notes:
- *   - The TagType value should match the first TagId value for that specific
- *     section.
- *
- *    - Each TagType can have TagId(s) that correspond from [n -> n+99]
- *
- *    - A TagType requires at least 1 corresponding TagId with the same value.
- *
- *    - There are no duplicates.
- * 
- *  Objects will deserialize incorrectly if these expectations are not met.
  */
 
 using System;
-using System.Collections.Generic;
 
-namespace TagEnums {
+namespace Tags {
 
   [Serializable]
   public enum TagType : int {
-    NoType = -1,
-    Agents = 100,
-    Geometry = 200,
-    Device = 300,
-    Sensor = 400,
+    Agents = 0,
+    Geometry = 1,
+    Device = 2,
+    Sensor = 3,
+  }
+  
+  [Serializable]
+  public enum SensorId : int {
+    ObstructionZone = 0,
+    ItemPickUpZone = 1,
+    LedgeDetectionSensor = 2,
   }
 
   [Serializable]
-  public enum TagId : int {
-    NoId = -1,
-
-    // Agents
-    Player = 100,
-
-    // Geometry
-    Cube = 200,
-    Stairs = 201,
-
-    // Devices
-    LaserSender = 300,
-    ColorChanger = 301,
-    Crate = 302,
-
-    // Sensors
-    ObstructionZone = 400,
-    ItemPickUpZone = 401,
-    LedgeDetectionSensor = 402,
+  public enum AgentId {
+    Player = 0,
   }
 
-  public static class TagMethods {
-    public static List<TagId> GetEnumsInRange(int min, int max) {
-      var output = new List<TagId>();
-      for (var i = min; i < max; ++i) {
-        if (Enum.IsDefined(typeof(TagId), i)) {
-          output.Add((TagId) i);
-        }
-      }
-      return output;
-    }
-    
-    public static int[] ListToValueArray(List<TagId> list) {
-      var output = new int[list.Count];
-      for (var i = 0; i < list.Count; ++i) {
-        output[i] = (int) list[i];
-      }
-      return output;
-    }
-
-    public static string[] ListToStringArray(List<TagId> list) {
-      var output = new string[list.Count];
-      for (var i = 0; i < list.Count; ++i) {
-        output[i] = Enum.GetName(typeof(TagId), list[i]);
-      }
-      return output;
-    }
+  [Serializable]
+  public enum GeometryId {
+    Cube = 0,
+    Stairs = 1,
   }
 
+  [Serializable]
+  public enum DeviceId {
+    LaserSender = 0,
+    ColorChanger = 1,
+    Crate = 2,
+    Exit = 3,
+  }
 }
