@@ -24,10 +24,15 @@ namespace Entities.Devices.ColorGate {
       _colorGateDetectionZone.RequiredColor = RequiredColor;
     }
 
+    public bool IsPlayerPresentWithCorrectColor() {
+      return _colorGateDetectionZone._IsPlayerPresentWithCorrectColor;
+    }
+
     private class __ColorGateDetectionZone : MonoBehaviour {
       public ColorsEnumerationMap.TetrominoColor RequiredColor;
       private BoxCollider _colorDetectionCollider;
-      private bool _isPlayerPresentWithCorrectColor;
+
+      internal bool _IsPlayerPresentWithCorrectColor;
 
       private void Start() {
         _colorDetectionCollider = gameObject.AddComponent<BoxCollider>();
@@ -40,13 +45,13 @@ namespace Entities.Devices.ColorGate {
         var objTag = other.GetComponent<Tag>();
         if (objTag == null || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
         var colorManipulator = other.GetComponentInChildren<ColorManipulator>();
-        _isPlayerPresentWithCorrectColor = colorManipulator.GetColor() == RequiredColor;
+        _IsPlayerPresentWithCorrectColor = colorManipulator.GetColor() == RequiredColor;
       }
 
       private void OnTriggerExit(Collider other) {
         var objTag = other.GetComponent<Tag>();
         if (objTag == null || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
-        _isPlayerPresentWithCorrectColor = false;
+        _IsPlayerPresentWithCorrectColor = false;
       }
     }
   }
