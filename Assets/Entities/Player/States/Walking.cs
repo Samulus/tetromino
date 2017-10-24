@@ -4,7 +4,6 @@
 */
 
 using Entities.Player.Sensors;
-using Player;
 using UnityEngine;
 
 namespace Entities.Player.States {
@@ -49,7 +48,7 @@ namespace Entities.Player.States {
 
       transform.root.Rotate(0, x, 0);
 
-      if (!_cliffDetect.IsCliffInfront()) {
+      if (!_cliffDetect.IsFacingCliff()) {
         var forward = transform.root.TransformDirection(Vector3.forward);
         _characterController.Move(forward * Time.deltaTime);
         _characterController.SimpleMove(Vector3.zero);

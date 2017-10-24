@@ -1,22 +1,20 @@
 ﻿/*
-	CliffEdgeDetection.cs
+	CliffDetect.cs
 	Author: Samuel Vargas
 */
 
 using UnityEngine;
 
-namespace Player {
-  public class CliffDetect : MonoBehaviour {
-    public bool IsCliffInfront() {
-      var start = transform.position + (transform.TransformDirection(Vector3.forward) / 4.0f);
-      var isCliff = !Physics.Raycast(start, Vector3.down, 1.0f);
-      Debug.DrawRay(start, Vector3.down, isCliff ? Color.red : Color.blue);
-      return isCliff;
-    }
+namespace Entities.Player.Sensors {
 
-    public bool IsCliffBehind() {
-      var start = transform.position + (transform.TransformDirection(Vector3.back) / 4.0f);
-      var isCliff = !Physics.Raycast(start, Vector3.down, 1.0f);
+  public class CliffDetect : MonoBehaviour {
+    private Transform player;
+    
+    public bool IsFacingCliff() {
+      var above = transform.root.position;
+      above.y += 0.1f;
+      var start = above + (transform.TransformDirection(Vector3.forward) / 4.0f);
+      var isCliff = !Physics.Raycast(start, Vector3.down, 2.0f);
       Debug.DrawRay(start, Vector3.down, isCliff ? Color.red : Color.blue);
       return isCliff;
     }

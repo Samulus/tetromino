@@ -128,6 +128,4 @@ MonoBehaviour:
   _agentId: 0
   _geometryId: 0
   _deviceId: 0
-  AgentId: 0
-  GeometryId: 0
-  DeviceId: 1
+  _pickUpId: 0
