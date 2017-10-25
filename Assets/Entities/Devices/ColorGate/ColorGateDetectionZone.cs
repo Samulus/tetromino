@@ -32,12 +32,15 @@ namespace Entities.Devices.ColorGate {
       public ColorsEnumerationMap.TetrominoColor RequiredColor;
       private BoxCollider _colorDetectionCollider;
 
+      private static readonly Vector3 Center = new Vector3(0, 1, 0);
+      private static readonly Vector3 Size = new Vector3(1, 1.8986f, 2.0277f);
+
       internal bool _IsPlayerPresentWithCorrectColor;
 
       private void Start() {
         _colorDetectionCollider = gameObject.AddComponent<BoxCollider>();
-        _colorDetectionCollider.size = new Vector3(1, 1.8986f, 1.0277f);
-        _colorDetectionCollider.center = new Vector3(0, 0.9501185f, -0.48481f);
+        _colorDetectionCollider.center = Center;
+        _colorDetectionCollider.size = Size;
         _colorDetectionCollider.isTrigger = true;
       }
 

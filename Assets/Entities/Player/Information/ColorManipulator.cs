@@ -8,7 +8,7 @@ using Util;
 
 namespace Entities.Player.Information {
   public class ColorManipulator : MonoBehaviour {
-    private ColorsEnumerationMap.TetrominoColor _currentColor;
+    public ColorsEnumerationMap.TetrominoColor CurrentColor;
     private Material _defaultMaterial;
     private SkinnedMeshRenderer _skinnedMeshRenderer;
     private ColorsEnumerationMap _colorsEnumerationMap;
@@ -20,16 +20,16 @@ namespace Entities.Player.Information {
     }
 
     public ColorsEnumerationMap.TetrominoColor GetColor() {
-      return _currentColor;
+      return CurrentColor;
     }
   
     public void SetColor(ColorsEnumerationMap.TetrominoColor color) {
-      _currentColor = color;
+      CurrentColor = color;
       _skinnedMeshRenderer.material = _colorsEnumerationMap.GetMaterialFromColor(color);
     }
 
     public void ClearColor() {
-      _currentColor = ColorsEnumerationMap.TetrominoColor.NoColor;
+      CurrentColor = ColorsEnumerationMap.TetrominoColor.NoColor;
       _skinnedMeshRenderer.material = _defaultMaterial;
     }
   }
