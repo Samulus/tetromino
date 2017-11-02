@@ -15,7 +15,7 @@ namespace Tags {
     [SerializeField] private AgentId _agentId;
     [SerializeField] private GeometryId _geometryId;
     [SerializeField] private DeviceId _deviceId;
-    [SerializeField] private PickUpId _pickUpId;
+    [SerializeField] private PushableId _pushableId;
     
     public TagType GetTagType() {
       return _type;
@@ -85,16 +85,16 @@ namespace Tags {
       return _deviceId;
     }
 
-    public PickUpId PickUpId {
+    public PushableId PushableId {
       get {
-        Debug.Assert(Type == TagType.PickUp,
-          "Get invoked on PickUpId but TagType was: " + Enum.GetName(typeof(TagType), Type));
-        return _pickUpId;
+        Debug.Assert(Type == TagType.Pushable,
+          "Get invoked on PushableId but TagType was: " + Enum.GetName(typeof(TagType), Type));
+        return _pushableId;
       }
       set {
-        Debug.Assert(Type == TagType.PickUp,
-          "Set invoked on PickUpId but TagType was: " + Enum.GetName(typeof(TagType), Type));
-        _pickUpId = value;
+        Debug.Assert(Type == TagType.Pushable,
+          "Set invoked on PushableId but TagType was: " + Enum.GetName(typeof(TagType), Type));
+        _pushableId = value;
       }
     }
   }

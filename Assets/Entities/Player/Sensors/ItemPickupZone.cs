@@ -1,6 +1,6 @@
 ﻿/*
-	ItemPickupZone.cs
-	Author: Samuel Vargas
+ * ItemPickupZone.cs
+ * Author: Samuel Vargas
 */
 
 using Tags;
@@ -47,20 +47,6 @@ namespace Entities.Player.Sensors {
         return _isPickUpPresent;
       }
 
-      private void OnTriggerEnter(Collider other) {
-        var objTag = other.GetComponent<Tag>();
-        if (objTag == null || objTag.Type != TagType.PickUp) return;
-        _isPickUpPresent = true;
-        _potentialPickUp = other.gameObject;
-      }
-
-      private void OnTriggerExit(Collider other) {
-        var objTag = other.GetComponent<Tag>();
-        if (objTag == null || objTag.Type != TagType.PickUp) return;
-        if (_potentialPickUp == null) return;
-        _isPickUpPresent = false;
-        _potentialPickUp = null;
-      }
     }
   }
 

@@ -11,7 +11,7 @@ namespace Entities.Player.States {
     private FiniteStateMachine _finiteStateMachine;
     private Animator _animator;
     private ItemPickupZone _itemPickupZone;
-    private ObstructionPickupZone _obstructionPickupZone;
+    //private ObstructionPickupZone _obstructionPickupZone;
     private Inventory.Inventory _inventory;
 
     public override void Enter() {
@@ -25,7 +25,7 @@ namespace Entities.Player.States {
       _finiteStateMachine = transform.root.GetComponentInChildren<FiniteStateMachine>();
       _animator = transform.root.GetComponentInChildren<Animator>();
       _itemPickupZone = transform.root.GetComponentInChildren<ItemPickupZone>();
-      _obstructionPickupZone = transform.root.GetComponentInChildren<ObstructionPickupZone>();
+      //_obstructionPickupZone = transform.root.GetComponentInChildren<ObstructionPickupZone>();
       _inventory = transform.root.GetComponentInChildren<Inventory.Inventory>();
     }
 
@@ -53,14 +53,16 @@ namespace Entities.Player.States {
         return;
       }
 
-      var isObstructionPresent = _obstructionPickupZone.IsObstructionPresent();
+      //var isObstructionPresent = _obstructionPickupZone.IsObstructionPresent();
       var isPickupPresent = _itemPickupZone.IsPickUpPresent();
 
       // Pickup a new item.
+      /*
       if (!isObstructionPresent && isPickupPresent) {
         var item = _itemPickupZone.GetPickUp();
         _inventory.AddItem(item);
       }
+      */
     }
   }
 }

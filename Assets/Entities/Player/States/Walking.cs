@@ -14,7 +14,7 @@ namespace Entities.Player.States {
     private CliffDetect _cliffDetect;
     private Inventory.Inventory _inventory;
     private ItemPickupZone _itemPickupZone;
-    private ObstructionPickupZone _obstructionPickupZone;
+    //private ObstructionPickupZone _obstructionPickupZone;
 
     public override void Enter() {
       //_animator.SetTrigger("Walk");
@@ -29,7 +29,7 @@ namespace Entities.Player.States {
       _characterController = transform.root.GetComponentInChildren<CharacterController>();
       _cliffDetect = transform.root.GetComponentInChildren<CliffDetect>();
       _itemPickupZone = transform.root.GetComponentInChildren<ItemPickupZone>();
-      _obstructionPickupZone = transform.root.GetComponentInChildren<ObstructionPickupZone>();
+      //_obstructionPickupZone = transform.root.GetComponentInChildren<ObstructionPickupZone>();
       _inventory = transform.root.GetComponentInChildren<Inventory.Inventory>();
     }
 
@@ -66,14 +66,16 @@ namespace Entities.Player.States {
         return;
       }
 
-      var isObstructionPresent = _obstructionPickupZone.IsObstructionPresent();
+      //var isObstructionPresent = _obstructionPickupZone.IsObstructionPresent();
       var isPickupPresent = _itemPickupZone.IsPickUpPresent();
 
       // Pickup a new item.
+      /*
       if (!isObstructionPresent && isPickupPresent) {
         var item = _itemPickupZone.GetPickUp();
         _inventory.AddItem(item);
       }
+      */
     }
   }
 }

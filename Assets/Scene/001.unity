@@ -3530,6 +3530,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe11240c30bbbc04883b850647c45c88, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1307299931 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4902874369985410, guid: 57a17088731167243bf70e3688d53ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1512437388}
 --- !u!4 &1339129198 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4036528363916592, guid: fe11240c30bbbc04883b850647c45c88,
@@ -3768,7 +3773,13 @@ Prefab:
       propertyPath: Devices
       value: 
       objectReference: {fileID: 214412546}
-    m_RemovedComponents: []
+    - target: {fileID: 1360415550244168, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
+      propertyPath: m_Name
+      value: Status
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114187453261064704, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
+    - {fileID: 114766540206279448, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1549886704
@@ -3941,6 +3952,47 @@ Transform:
   m_PrefabParentObject: {fileID: 4036528363916592, guid: fe11240c30bbbc04883b850647c45c88,
     type: 2}
   m_PrefabInternal: {fileID: 168880886}
+--- !u!1 &1710778445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1710778446}
+  - component: {fileID: 1710778448}
+  m_Layer: 0
+  m_Name: ColorManipulator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1710778446
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710778445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1307299931}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710778448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710778445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f091b77e4cf2bdd438ea177689aac350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentColor: 0
 --- !u!1001 &1714349049
 Prefab:
   m_ObjectHideFlags: 0

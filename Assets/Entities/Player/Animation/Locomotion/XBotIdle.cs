@@ -15,7 +15,7 @@ public class XBotIdle : StateMachineBehaviour {
     animator.transform.root.Rotate(0, x, 0);
 
     var itemPickupZone = animator.transform.root.GetComponentInChildren<ItemPickupZone>();
-    var obstructionPickupZone = animator.transform.root.GetComponentInChildren<ObstructionPickupZone>();
+    //var obstructionPickupZone = animator.transform.root.GetComponentInChildren<ObstructionPickupZone>();
     var inventory = animator.transform.root.GetComponentInChildren<Inventory>();
     
     // Drop Items
@@ -24,10 +24,12 @@ public class XBotIdle : StateMachineBehaviour {
     }
 
     // Pick Up items
+    /*
     else if (Input.GetKeyDown(KeyCode.Space) && !obstructionPickupZone.IsObstructionPresent() &&
         itemPickupZone.IsPickUpPresent()) {
       inventory.AddItem(itemPickupZone.GetPickUp());
     }
+    */
 
     // Move forward
     if (Input.GetKeyDown("w")) {

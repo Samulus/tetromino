@@ -13,7 +13,7 @@ namespace Tags {
     Geometry = 1,
     Device = 2,
     Sensor = 3,
-    PickUp = 4,
+    Pushable = 4,
   }
 
   [Serializable]
@@ -44,7 +44,7 @@ namespace Tags {
   }
 
   [Serializable]
-  public enum PickUpId {
+  public enum PushableId {
     ElevenHalfKgWeight = 0,
     Crate = 1,
   }

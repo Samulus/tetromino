@@ -15,7 +15,7 @@ namespace Editor.Inspectors {
     private SerializedProperty _serialAgentId;
     private SerializedProperty _serialGeometryId;
     private SerializedProperty _serialDeviceId;
-    private SerializedProperty _serialPickUpId;
+    private SerializedProperty _serialPushableId;
 
     private void SetupValues() {
       _serialType = serializedObject.FindProperty("_type");
@@ -23,7 +23,7 @@ namespace Editor.Inspectors {
       _serialAgentId = serializedObject.FindProperty("_agentId");
       _serialGeometryId = serializedObject.FindProperty("_geometryId");
       _serialDeviceId = serializedObject.FindProperty("_deviceId");
-      _serialPickUpId = serializedObject.FindProperty("_pickUpId");
+      _serialPushableId = serializedObject.FindProperty("_pushableId");
     }
 
     public override void OnInspectorGUI() {
@@ -43,8 +43,8 @@ namespace Editor.Inspectors {
         case TagType.Sensor:
           EditorGUILayout.PropertyField(_serialSensorId);
           break;
-        case TagType.PickUp:
-          EditorGUILayout.PropertyField(_serialPickUpId);
+        case TagType.Pushable:
+          EditorGUILayout.PropertyField(_serialPushableId);
           break;
       }
       serializedObject.ApplyModifiedProperties();
