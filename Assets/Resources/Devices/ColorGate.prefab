@@ -52,8 +52,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4674940227320136}
   - component: {fileID: 114522212984579100}
-  - component: {fileID: 114882193297792502}
-  - component: {fileID: 114655850650009402}
   - component: {fileID: 95145284424735556}
   m_Layer: 0
   m_Name: ColorGate
@@ -234,30 +232,7 @@ MonoBehaviour:
   _agentId: 0
   _geometryId: 0
   _deviceId: 4
-  _pickUpId: 0
---- !u!114 &114655850650009402
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1352268042309978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7871cc528c8648348ed85b46f9175dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114882193297792502
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1352268042309978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 971ffa46e31b4e94abc054c5f64db122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RequiredColor: 3
+  _pushableId: 0
 --- !u!137 &137990255152940300
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
