@@ -25,7 +25,7 @@ namespace Devices.LaserSender {
       // Setup start and end of laser
       _laserPseudoIndefiniteEnd =
         new Vector3(transform.position.x, transform.position.y, transform.position.z - MaxDistance);
-      
+
       // Laser Collisions
       _laserCollider = gameObject.AddComponent<BoxCollider>();
       _laserCollider.isTrigger = true;
@@ -37,12 +37,30 @@ namespace Devices.LaserSender {
     private void OnTriggerStay(Collider other) {
       var maybeLaser = other.transform.GetComponent<Tag>();
       if (maybeLaser && maybeLaser.Type == TagType.Device && maybeLaser.DeviceId == DeviceId.Laser) return;
-      var distance = Math.Abs((transform.position - other.transform.position).z);
+      var distance = Math.Abs((transform.position.z - other.transform.position.z));
+      Debug.Log(distance);
       var endPoint = transform.position;
       endPoint.z = other.transform.position.z;
-      _laserCollider.center = new Vector3(0, 0, distance / 2.0f);
-      _laserCollider.size = new Vector3(transform.localScale.x / 2.0f, transform.localScale.y / 2.0f,
-        transform.localScale.z * distance);
+      /*
+       * Method:
+       *
+       *   Set the center 'Z' of the Box Component to somewhere BETWEEN the player and the origin
+       *
+       */
+      
+      /*
+       * Patterns:
+       *     Center: 1
+       *     Size: 2
+       *
+       *     Center: 2
+       *     Size: 4
+       */
+
+      var middle = (transform.position.z - other.transform.position.z) / 2.0f;
+      Debug.Log(middle);
+      _laserCollider.center = new Vector3(0, 0, middle); 
+      _laserCollider.size = new Vector3(transform.localScale.x / 2.0f, transform.localScale.y / 2.0f, middle * 2.0f);
     }
 
     private void OnTriggerExit(Collider other) {
