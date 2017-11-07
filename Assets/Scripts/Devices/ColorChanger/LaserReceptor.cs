@@ -34,7 +34,7 @@ namespace Devices.ColorChanger {
       _exteriorColorChanger = transform.parent.GetComponentInChildren<ExteriorColorChanger>();
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
       var objTag = other.GetComponent<Tag>();
       if (!objTag || objTag.GetTagType() != TagType.Device || objTag.GetDeviceId() != DeviceId.Laser) return;
       var color = other.GetComponent<GameObjectColor>();

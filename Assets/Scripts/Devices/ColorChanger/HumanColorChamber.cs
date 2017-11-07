@@ -7,6 +7,7 @@
  * the GameObjectColor of the device.
  */
 
+using Colors;
 using Tags;
 using UnityEngine;
 using Util;
@@ -24,12 +25,13 @@ namespace Devices.ColorChanger {
       _exteriorColorChanger = transform.root.GetComponentInChildren<ExteriorColorChanger>();
     }
     
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
       var objTag = other.GetComponent<Tag>();
       if (!objTag || objTag.Type != TagType.Agent || objTag.AgentId != AgentId.Player) return;
       var color = other.GetComponentInChildren<GameObjectColor>();
+      var repainter = other.GetComponentInChildren<SkinnedMeshRepainter>();
       color.Value = _exteriorColorChanger.GetColor().Value;
-      // TODO: Actually repaint the player once they walk into this box.
+      repainter.TriggerRepaint();
     }
   }
   

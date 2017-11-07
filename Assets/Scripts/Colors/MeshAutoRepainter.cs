@@ -19,6 +19,11 @@ namespace Colors {
       _colorTextureMapping = GetComponent<ColorTextureMapping>();
       _meshRenderer.material = _colorTextureMapping.GetTexture(_gameObjectColor.Value);
     }
+
+    public void TriggerRepaint() {
+      _meshRenderer.material = _colorTextureMapping.GetTexture(_gameObjectColor.Value);
+    }
+    
   }
 
 }
