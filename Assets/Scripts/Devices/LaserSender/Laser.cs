@@ -25,14 +25,19 @@ namespace Devices.LaserSender {
     private Direction _facing;
 
     private void Start() {
-      // Laser Collisions
       _laserCollider = gameObject.AddComponent<BoxCollider>();
       _laserCollider.isTrigger = true;
       _laserCollider.center = new Vector3(0, 0, MaxDistance / 2.0f);
       _laserCollider.size = new Vector3(transform.localScale.x / 2.0f, transform.localScale.y / 2.0f,
         transform.localScale.z * MaxDistance + 0.5f);
-
+      SetupRigidbody();
       SetDirection();
+    }
+
+    private void SetupRigidbody() {
+      var rigidBody = gameObject.AddComponent<Rigidbody>();
+      rigidBody.isKinematic = true;
+      rigidBody.useGravity = false;
     }
 
     private void SetDirection() {
@@ -51,6 +56,13 @@ namespace Devices.LaserSender {
       else {
         Debug.Assert(false,
           string.Format("Parent LaserSender: '{0}' was not placed at a 90 degree angle.", transform.parent.name));
+      }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+      var maybeLaser = other.transform.GetComponent<Tag>();
+      if (maybeLaser && maybeLaser.Type == TagType.Device && maybeLaser.DeviceId == DeviceId.Laser) {
+        Physics.IgnoreCollision(_laserCollider, other);
       }
     }
 
