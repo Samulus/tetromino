@@ -41,6 +41,7 @@ namespace Tags {
     Exit = 3,
     ColorGate = 4,
     Laser = 5,
+    SokoBlock = 6,
   }
 
   [Serializable]
