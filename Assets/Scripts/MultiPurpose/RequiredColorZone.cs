@@ -31,7 +31,16 @@ namespace MultiPurpose {
     public GameObject GetGameObject() {
       return _gameObjectWithExpectedColor;
     }
+    
+    public bool GameObjectPresentWithExpectedColor() {
+      if (!_gameObjectWithExpectedColor) {
+        return false;
+      }
 
+      var color = _gameObjectWithExpectedColor.GetComponent<GameObjectColor>().Value;
+      return color == RequiredColor;
+    }
+    
     private void OnTriggerEnter(Collider other) {
       var color = other.GetComponent<GameObjectColor>();
       if (_gameObjectWithExpectedColor || !color || color.Value != RequiredColor) return;
