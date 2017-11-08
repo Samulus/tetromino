@@ -1,5 +1,4 @@
-﻿using Devices.SokoBlock;
-using MultiPurpose;
+﻿using Tags;
 using UnityEngine;
 
 namespace Player.Animation.Locomotion {
@@ -13,20 +12,10 @@ namespace Player.Animation.Locomotion {
       var x = Input.GetAxis("Horizontal") * Time.deltaTime * 250.0f;
       animator.transform.root.Rotate(0, x, 0);
 
-      var itemPrescenceZone = GameObject.Find("Player/Sensor/ItemPushZone").GetComponent<ItemPrescenceZone>();
-      var obstructionPrescenceZone =
-        GameObject.Find("Player/Sensor/ObstructionPushZone").GetComponent<ItemPrescenceZone>();
 
-
-      // Check if we can push a SokoBlock
+      // Check if we're allowed to push a Sokoblock.
       if (Input.GetKey("space")) {
-        Debug.Log("Space");
-        var obstructionPresent = obstructionPrescenceZone.GetItem() != null;
-        var itemPresent = itemPrescenceZone.GetItem() != null;
-
-        if (!obstructionPresent && itemPresent) {
-          itemPrescenceZone.GetItem().GetComponent<SokoBlockPusher>().Push();
-        }
+        PushSokoBlock();
       }
 
       // Move forward
@@ -34,6 +23,19 @@ namespace Player.Animation.Locomotion {
         animator.SetBool("isIdle", false);
         animator.SetBool("isWalking", true);
       }
+    }
+
+    private void PushSokoBlock() {
+      var itemPrescenceZone = GameObject.Find("Player/Sensor/ItemPushZone").GetComponent<TagPrescenceZone>();
+      var obstructionPrescenceZone =
+        GameObject.Find("Player/Sensor/ObstructionPushZone").GetComponent<TagPrescenceZone>();
+      var obstructionPresent = obstructionPrescenceZone.IsEmpty();
+      var itemPresent = itemPrescenceZone.IsEmpty();
+
+      /*
+      if (!obstructionPresent && itemPresent && itemPrescenceZone.Cont) {
+      }
+      */
     }
   }
 

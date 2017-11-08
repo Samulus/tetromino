@@ -42,6 +42,7 @@ namespace Tags {
     ColorGate = 4,
     Laser = 5,
     SokoBlock = 6,
+    LaserReceptor = 7,
   }
 
   [Serializable]
