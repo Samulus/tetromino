@@ -1,41 +1,32 @@
-﻿using Tags;
+﻿/*
+ * XBotIdle.cs
+ * Author: Samuel Vargas
+ *
+ * Animation state for when the player is not pressing any keys
+ * at all.
+ */
+
+using Devices.SokoBlock;
 using UnityEngine;
 
 namespace Player.Animation.Locomotion {
 
   public class XBotIdle : StateMachineBehaviour {
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-      animator.SetBool("isIdle", true);
-    }
-
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-      var x = Input.GetAxis("Horizontal") * Time.deltaTime * 250.0f;
-      animator.transform.root.Rotate(0, x, 0);
-
-
-      // Check if we're allowed to push a Sokoblock.
-      if (Input.GetKey("space")) {
-        PushSokoBlock();
-      }
-
-      // Move forward
-      if (Input.GetKeyDown("w")) {
+      SokoBlockPusher sokoBlockPusher;
+      if (PlayerInput.RequestToPushSokoBlock(out sokoBlockPusher)) {
+        sokoBlockPusher.StartPushing();
+        animator.SetBool("isPushing", true);
         animator.SetBool("isIdle", false);
+        return;
+      }
+
+      PlayerActions.MaybeRotate(ref animator);
+
+      if (PlayerInput.RequestToWalkForward(ref animator)) {
         animator.SetBool("isWalking", true);
+        animator.SetBool("isIdle", false);
       }
-    }
-
-    private void PushSokoBlock() {
-      var itemPrescenceZone = GameObject.Find("Player/Sensor/ItemPushZone").GetComponent<TagPrescenceZone>();
-      var obstructionPrescenceZone =
-        GameObject.Find("Player/Sensor/ObstructionPushZone").GetComponent<TagPrescenceZone>();
-      var obstructionPresent = obstructionPrescenceZone.IsEmpty();
-      var itemPresent = itemPrescenceZone.IsEmpty();
-
-      /*
-      if (!obstructionPresent && itemPresent && itemPrescenceZone.Cont) {
-      }
-      */
     }
   }
 

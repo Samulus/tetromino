@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4110735881110722}
   - component: {fileID: 114345737241927158}
+  - component: {fileID: 114142947040100010}
   m_Layer: 0
   m_Name: ColorGateController
   m_TagString: Untagged
@@ -116,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4160667158948534}
   - component: {fileID: 114250470063753990}
+  - component: {fileID: 114495401514775294}
   m_Layer: 0
   m_Name: ColorGateDetectionZone
   m_TagString: Untagged
@@ -276,6 +278,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114142947040100010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210355340604688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086f352fb52647c3a612e18f5eaa818a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
+  _sensorId: 4
+  _agentId: 0
+  _geometryId: 0
+  _deviceId: 0
+  _pushableId: 0
 --- !u!114 &114250470063753990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +320,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredColor: 3
+--- !u!114 &114495401514775294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1713074174894002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086f352fb52647c3a612e18f5eaa818a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
+  _sensorId: 3
+  _agentId: 0
+  _geometryId: 0
+  _deviceId: 4
+  _pushableId: 0
 --- !u!114 &114522212984579100
 MonoBehaviour:
   m_ObjectHideFlags: 1

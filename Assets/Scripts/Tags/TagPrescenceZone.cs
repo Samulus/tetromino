@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
 namespace Tags {
@@ -57,6 +58,17 @@ namespace Tags {
                                  .Any(ttag => ttag.Type == TagType.Agent && ttag.AgentId == agentId);
     }
 
+    public GameObject GetAgent(AgentId agentId) {
+      foreach (var gameObj in _itemsInPresceneZone) {
+        var ttag = gameObj.GetComponent<Tag>();
+        if (ttag.Type == TagType.Device && ttag.AgentId == agentId) {
+          return gameObj;
+        }
+      }
+
+      return null;
+    }
+
     public List<GameObject> GetDevices(DeviceId deviceId) {
       List<GameObject> output = new List<GameObject>();
       foreach (var gameObj in _itemsInPresceneZone) {
@@ -69,16 +81,17 @@ namespace Tags {
       return output;
     }
 
-    public List<GameObject> GetAgents(AgentId agentId) {
-      List<GameObject> output = new List<GameObject>();
+    public bool GetFirstDevice(DeviceId deviceId, out GameObject device) {
+      device = null;
       foreach (var gameObj in _itemsInPresceneZone) {
         var ttag = gameObj.GetComponent<Tag>();
-        if (ttag.Type == TagType.Agent && ttag.AgentId == agentId) {
-          output.Add(gameObj);
+        if (ttag.Type == TagType.Device && ttag.DeviceId == deviceId) {
+          device = gameObj;
+          return true;
         }
       }
-
-      return output;
+      
+      return false;
     }
 
     private void OnTriggerEnter(Collider other) {

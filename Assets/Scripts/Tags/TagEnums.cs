@@ -19,8 +19,12 @@ namespace Tags {
   [Serializable]
   public enum SensorId : int {
     ObstructionZone = 0,
-    ItemPickUpZone = 1,
+    ItemPushZone = 1,
     LedgeDetectionSensor = 2,
+    ColorGateDetectionZone = 3,
+    ColorGateController = 4,
+    ColorChangerBoundingBox = 5,
+    ColorChangerHumanChamber = 6,
   }
 
   [Serializable]

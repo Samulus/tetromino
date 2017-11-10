@@ -1,31 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Entities.Player.Sensors;
+﻿/*
+ * XBotWalking.cs
+ * Author: Samuel Vargas
+ */
+
+using Devices.SokoBlock;
 using UnityEngine;
 
-public class XBotWalking : StateMachineBehaviour {
-  
-  public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-    var x = Input.GetAxis("Horizontal") * Time.deltaTime * 250.0f;
-    animator.transform.root.Rotate(0, x, 0);
+namespace Player.Animation.Locomotion {
 
-    var cliffDetect = animator.transform.root.GetComponentInChildren<CliffDetect>();
-    
-    if (!cliffDetect.IsFacingCliff()) {
-      var forward = animator.transform.root.TransformDirection(Vector3.forward);
-      animator.transform.root.GetComponentInChildren<CharacterController>().Move(forward * Time.deltaTime);
-      animator.transform.root.GetComponentInChildren<CharacterController>().SimpleMove(Vector3.zero);
-    }
+  public class XBotWalking : StateMachineBehaviour {
+    public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+      PlayerActions.MaybeRotate(ref animator);
+      
+      SokoBlockPusher sokoBlockPusher;
+      if (PlayerInput.RequestToPushSokoBlock(out sokoBlockPusher)) {
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isPushing", true);
+        sokoBlockPusher.StartPushing();
+        return;
+      }
+      
+      if (PlayerInput.RequestToRunForward(ref animator)) {
+        animator.SetBool("isIdle", false);
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isRunning", true);
+        return;
+      }
 
-    if (Input.GetKey("w") && Input.GetKey(KeyCode.LeftShift)) {
-      animator.SetBool("isIdle", false);
-      animator.SetBool("isWalking", false);
-      animator.SetBool("isRunning", true);
-    }
+      if (!PlayerInput.RequestToWalkForward(ref animator)) {
+        animator.SetBool("isIdle", true);
+        animator.SetBool("isWalking", false);
+        return;
+      }
+      
+      PlayerActions.WalkForward(ref animator);
 
-    if (!Input.GetKey("w")) {
-      animator.SetBool("isIdle", true);
-      animator.SetBool("isWalking", false);
     }
   }
+
 }
