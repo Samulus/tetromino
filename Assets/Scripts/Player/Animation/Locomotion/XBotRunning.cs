@@ -13,12 +13,14 @@ namespace Player.Animation.Locomotion {
       
       PlayerActions.MaybeRotate(ref animator);
 
+      /*
       SokoBlockPusher sokoBlockPusher;
-      if (PlayerInput.RequestToPushSokoBlock(out sokoBlockPusher)) {
+      if (PlayerInput.RequestToPushSokoBlock()) {
         animator.SetBool("isRunning", false);
         animator.SetBool("isPushing", true);
         return;
       }
+      */
 
       if (PlayerInput.RequestToWalkForward(ref animator)) {
         animator.SetBool("isIdle", false);

@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
+using UnityEngine.iOS;
 
 namespace Tags {
 
@@ -58,6 +59,19 @@ namespace Tags {
                                  .Any(ttag => ttag.Type == TagType.Agent && ttag.AgentId == agentId);
     }
 
+    public bool ContainsAtLeastOnceDevice(DeviceId device, out GameObject found) {
+      found = null;
+      foreach (var gameObj in _itemsInPresceneZone) {
+        var ttag = gameObj.GetComponent<Tag>();
+        if (ttag.Type == TagType.Device && ttag.DeviceId == device) {
+          found = gameObj;
+          return true;
+        }
+      }
+
+      return false;
+    }
+    
     public GameObject GetAgent(AgentId agentId) {
       foreach (var gameObj in _itemsInPresceneZone) {
         var ttag = gameObj.GetComponent<Tag>();
@@ -96,7 +110,10 @@ namespace Tags {
 
     private void OnTriggerEnter(Collider other) {
       var objTag = other.GetComponent<Tag>();
-      Debug.AssertFormat(objTag != null, "OnTriggerEnter: GameObject '{0}', is missing a Tag component.", other.name);
+      //Debug.AssertFormat(objTag != null, "OnTriggerEnter: GameObject '{0}', is missing a Tag component.", other.name);
+      if (!objTag)
+        return;
+      
       if (_onEntry != null) {
         _onEntry(other.gameObject);
       }
@@ -105,7 +122,10 @@ namespace Tags {
 
     private void OnTriggerExit(Collider other) {
       var objTag = other.GetComponent<Tag>();
-      Debug.AssertFormat(objTag != null, "OnTriggerEnter: GameObject '{0}', is missing a Tag component.", other.name);
+      if (!objTag)
+        return;
+      
+      //Debug.AssertFormat(objTag != null, "OnTriggerEnter: GameObject '{0}', is missing a Tag component.", other.name);
       if (_itemsInPresceneZone.Contains(other.gameObject)) {
         if (_onExit != null) {
           _onExit(other.gameObject);

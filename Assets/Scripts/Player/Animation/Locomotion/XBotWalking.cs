@@ -12,13 +12,14 @@ namespace Player.Animation.Locomotion {
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
       PlayerActions.MaybeRotate(ref animator);
       
+      /*
       SokoBlockPusher sokoBlockPusher;
-      if (PlayerInput.RequestToPushSokoBlock(out sokoBlockPusher)) {
+      if (PlayerInput.RequestToPushSokoBlock()) {
         animator.SetBool("isWalking", false);
         animator.SetBool("isPushing", true);
-        sokoBlockPusher.StartPushing();
         return;
       }
+      */
       
       if (PlayerInput.RequestToRunForward(ref animator)) {
         animator.SetBool("isIdle", false);

@@ -1,22 +1,14 @@
-﻿/*
- * XbotPushing.cs
- * Author: Samuel Vargas
- *
- * This module allows the player to push SokoBlocks around.
- */
-
-using Tags;
+﻿using Tags;
 using UnityEngine;
 
 namespace Player.Animation.Locomotion {
 
-  public class XBotPushing : StateMachineBehaviour {
+  public class XBotPulling : StateMachineBehaviour {
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-      
       PlayerActions.MaybeRotate(ref animator);
-      
-      if (!PlayerInput.PushingButtonHeld()) {
-        animator.SetBool("isPushing", false);
+
+      if (!PlayerInput.PullingButtonHeld()) {
+        animator.SetBool("isPulling", false);
         animator.SetBool("isIdle", true);
 
         // Find Player Inventory
@@ -36,7 +28,7 @@ namespace Player.Animation.Locomotion {
         return;
       }
 
-      PlayerActions.WalkForward(ref animator);
+      PlayerActions.WalkBackward(ref animator);
     }
   }
 

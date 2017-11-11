@@ -21,6 +21,12 @@ namespace Player.Animation {
       animator.transform.root.GetComponentInChildren<CharacterController>().Move(forward * Time.deltaTime);
       animator.transform.root.GetComponentInChildren<CharacterController>().SimpleMove(Vector3.zero);
     }
+    
+    public static void WalkBackward(ref Animator animator) {
+      var back = animator.transform.root.TransformDirection(Vector3.back);
+      animator.transform.root.GetComponentInChildren<CharacterController>().Move(back * Time.deltaTime);
+      animator.transform.root.GetComponentInChildren<CharacterController>().SimpleMove(Vector3.zero);
+    }
 
     public static void RunForward(ref Animator animator) {
       var forward = animator.transform.root.TransformDirection(Vector3.forward);
