@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 95056493799783372}
   - component: {fileID: 64639143196510058}
   - component: {fileID: 54816293772239452}
+  - component: {fileID: 65781185500105224}
   m_Layer: 0
   m_Name: SokoBlock
   m_TagString: Untagged
@@ -38,9 +39,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400654428319366}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.4, y: 1.5, z: 2.49}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalRotation: {x: 0.6885923, y: 0.16075031, z: 0.16075031, w: -0.6885923}
+  m_LocalPosition: {x: -0.036793053, y: 1.5027747, z: 2.3153162}
+  m_LocalScale: {x: 1.0000005, y: 1.0000019, z: 1.0000015}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,6 +114,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8674a230b00bdaa4b83e69b3942ac180, type: 3}
+--- !u!65 &65781185500105224
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400654428319366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.80000013, y: 0.9000003, z: 1.0042483}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95056493799783372
 Animator:
   serializedVersion: 3

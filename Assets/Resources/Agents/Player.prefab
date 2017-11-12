@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 143209543447595104}
   - component: {fileID: 114453900103973112}
   - component: {fileID: 95711108141955356}
+  - component: {fileID: 65320703607087522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2256,6 +2257,18 @@ Transform:
   m_Father: {fileID: 4052202265145156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65320703607087522
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819519524013484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.75, y: 2, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &95711108141955356
 Animator:
   serializedVersion: 3
