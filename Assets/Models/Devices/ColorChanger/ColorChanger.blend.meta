@@ -11,21 +11,51 @@ ModelImporter:
     100006: ColorChanger
     100008: Cube
     100010: Door
+    100012: ColorChangerBacking
+    100014: ColorChangerExterior
+    100016: ColorChangerExterior_001
+    100018: ColorChangerBackPanel
+    100020: BackPanel
+    100022: Exterior
     400000: Armature
     400002: Bone
     400004: //RootNode
     400006: ColorChanger
     400008: Cube
     400010: Door
+    400012: ColorChangerBacking
+    400014: ColorChangerExterior
+    400016: ColorChangerExterior_001
+    400018: ColorChangerBackPanel
+    400020: BackPanel
+    400022: Exterior
     2300000: ColorChanger
     2300002: Cube
     2300004: //RootNode
+    2300006: ColorChangerBacking
+    2300008: ColorChangerExterior
+    2300010: ColorChangerExterior_001
+    2300012: ColorChangerBackPanel
+    2300014: BackPanel
+    2300016: Exterior
     3300000: ColorChanger
     3300002: Cube
     3300004: //RootNode
+    3300006: ColorChangerBacking
+    3300008: ColorChangerExterior
+    3300010: ColorChangerExterior_001
+    3300012: ColorChangerBackPanel
+    3300014: BackPanel
+    3300016: Exterior
     4300000: Cube
     4300002: Door
     4300004: ColorChanger
+    4300006: ColorChangerBacking
+    4300008: ColorChangerExterior_001
+    4300010: ColorChangerExterior
+    4300012: ColorChangerBackPanel
+    4300014: BackPanel
+    4300016: Exterior
     7400000: Default Take
     7400002: ArmatureAction
     9500000: //RootNode
