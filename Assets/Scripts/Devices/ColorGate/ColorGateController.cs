@@ -32,19 +32,24 @@ namespace Devices.ColorGate {
       _boxCollider.isTrigger = false;
     }
 
+    public bool IsOpen() {
+      return _isOpen;
+    }
+
     private void OnItemEntry(GameObject item) {
       var ttag = item.GetComponent<Tag>();
       if (ttag.Type != TagType.Agent || ttag.AgentId != AgentId.Player) return;
       var color = item.GetComponentInChildren<GameObjectColor>();
-      _boxCollider.isTrigger = color.Value == RequiredColor;
+      _isOpen = color.Value == RequiredColor;
+      _boxCollider.isTrigger = _isOpen;
     }
 
     private void OnItemExit(GameObject item) {
       var ttag = item.GetComponent<Tag>();
       if (ttag.Type != TagType.Agent || ttag.AgentId != AgentId.Player) return;
-      _boxCollider.isTrigger = false;
+      _isOpen = false;
+      _boxCollider.isTrigger = _isOpen;
     }
-    
   }
 
 }
