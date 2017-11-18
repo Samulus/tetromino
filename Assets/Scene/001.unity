@@ -5435,6 +5435,11 @@ Prefab:
       propertyPath: m_Name
       value: LaserSender 002 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114175453820493570, guid: 4d13ce7a9c6554d4da088a753014b3aa,
+        type: 2}
+      propertyPath: Value
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d13ce7a9c6554d4da088a753014b3aa, type: 2}
   m_IsPrefabParent: 0
