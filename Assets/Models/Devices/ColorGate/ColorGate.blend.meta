@@ -11,14 +11,18 @@ ModelImporter:
     100006: Door
     100008: Frame
     100010: Bone_0
+    100012: DoorBone
     400000: Armature
     400002: Bone
     400004: //RootNode
     400006: Door
     400008: Frame
     400010: Bone_0
+    400012: DoorBone
     2300000: Frame
+    2300002: Door
     3300000: Frame
+    3300002: Door
     4300000: Door
     4300002: Frame
     7400000: Default Take
