@@ -28,8 +28,11 @@ namespace Devices.LaserSender {
       _lineRenderer.SetPosition(0, transform.position);
       _lineRenderer.SetPosition(1, _laserPseudoIndefiniteEnd);
     }
-
+    
     private void Update() {
+      _lineRenderer.SetPosition(0, transform.position);
+      _laserPseudoIndefiniteEnd = transform.position + (transform.forward * MaxDistance);
+      
       Vector3 point;
       if (_laserRaycaster.LaserHasCollision(out point)) {
         _lineRenderer.SetPosition(1, point);

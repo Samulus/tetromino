@@ -5,7 +5,7 @@ namespace Player.Animation.Locomotion {
 
   public class XBotPulling : StateMachineBehaviour {
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-      //PlayerActions.MaybeRotate(ref animator);
+      PlayerActions.MaybeRotate(ref animator);
 
       if (!PlayerInput.PullingButtonHeld()) {
         animator.SetBool("isPulling", false);

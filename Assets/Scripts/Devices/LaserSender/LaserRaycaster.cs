@@ -39,7 +39,7 @@ namespace Devices.LaserSender {
     public bool LaserHasCollision(out Vector3 point) {
       point = Vector3.zero;
       var fwd = transform.TransformDirection(Vector3.forward);
-      Debug.DrawRay(transform.position, fwd, Color.cyan, MaxDistance);
+      //Debug.DrawRay(transform.position, fwd, Color.cyan, MaxDistance);
 
       var hits = Physics.RaycastAll(transform.position, fwd, MaxDistance);
       if (hits.Length >= 1) {
