@@ -819,9 +819,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f8c0fa2e0ee2b4d97aef929442c10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1819519524013484, guid: 57a17088731167243bf70e3688d53ca2, type: 2}
+  Cam: {fileID: 143786544}
+  lookAt: {fileID: 1356543812}
   SpeedMetersPerSec: 100
-  EyeHeight: 10
 --- !u!20 &143786544
 Camera:
   m_ObjectHideFlags: 0
@@ -842,7 +842,7 @@ Camera:
   far clip plane: 100
   field of view: 31
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -864,13 +864,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143786540}
-  m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -6.37, y: 13.01, z: -6.54}
+  m_LocalRotation: {x: 0.3213938, y: 0.3213938, z: -0.116977744, w: 0.8830223}
+  m_LocalPosition: {x: -4.55, y: 8.079, z: -4.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1924147456}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: 40, z: 0}
 --- !u!1001 &154037128
 Prefab:
   m_ObjectHideFlags: 0
@@ -4183,6 +4183,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4036528363916592, guid: fe11240c30bbbc04883b850647c45c88,
     type: 2}
   m_PrefabInternal: {fileID: 764794309}
+--- !u!1 &1356543812 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1819519524013484, guid: 57a17088731167243bf70e3688d53ca2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1039212717}
 --- !u!4 &1375852265 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4036528363916592, guid: fe11240c30bbbc04883b850647c45c88,
