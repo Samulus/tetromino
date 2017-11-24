@@ -33,13 +33,15 @@ namespace Devices.LaserSender {
     private LaserBoxCollider _laserBoxCollider;
 
     private void Start() {
-      _laserBoxCollider = transform.parent.GetComponentInChildren<LaserBoxCollider>();
+      _laserBoxCollider = transform.GetComponent<LaserBoxCollider>();
+      Debug.AssertFormat(_laserBoxCollider != null,
+                         "Caught attempt to use LaserRaycaster without sibling BoxCollider component");
     }
 
     public bool LaserHasCollision(out Vector3 point) {
       point = Vector3.zero;
       var fwd = transform.TransformDirection(Vector3.forward);
-      //Debug.DrawRay(transform.position, fwd, Color.cyan, MaxDistance);
+      Debug.DrawRay(transform.position, fwd, Color.cyan, MaxDistance);
 
       var hits = Physics.RaycastAll(transform.position, fwd, MaxDistance);
       if (hits.Length >= 1) {
@@ -55,7 +57,8 @@ namespace Devices.LaserSender {
         point = h.point;
         var center = new Vector3(0, 0, h.distance / 2.0f);
         var size = new Vector3(0.25f, 0.25f, h.distance);
-        _laserBoxCollider.ResizeBoxCollider(center, size);
+        if (_laserBoxCollider)
+          _laserBoxCollider.ResizeBoxCollider(center, size);
         return true;
       }
 
@@ -63,7 +66,8 @@ namespace Devices.LaserSender {
       // to be super long again.
       var longCenter = new Vector3(0, 0, MaxDistance);
       var longSize = new Vector3(0, 0, MaxDistance / 2.0f);
-      _laserBoxCollider.ResizeBoxCollider(longCenter, longSize);
+      if (_laserBoxCollider)
+        _laserBoxCollider.ResizeBoxCollider(longCenter, longSize);
       return false;
     }
   }

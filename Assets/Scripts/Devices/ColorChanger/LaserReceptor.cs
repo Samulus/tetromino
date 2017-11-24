@@ -31,7 +31,7 @@ namespace Devices.ColorChanger {
       var objTag = other.GetComponent<Tag>();
       if (!objTag || objTag.GetTagType() != TagType.Device || objTag.GetDeviceId() != DeviceId.Laser) return;
       var color = other.GetComponent<GameObjectColor>();
-      Debug.AssertFormat(color != null, "Laser '{0}' is missing GameObjectColor component", other.name);
+      Debug.AssertFormat(color != null, "ReflectedLaser '{0}' is missing GameObjectColor component", other.name);
       _gameObjectColor.Value = color.Value;
     }
 

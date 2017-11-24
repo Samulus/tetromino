@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4318551356441316}
+  - component: {fileID: 114926514047984114}
+  - component: {fileID: 114895118834483380}
   - component: {fileID: 114991309139317314}
   - component: {fileID: 114405053651498028}
-  - component: {fileID: 114895118834483380}
-  - component: {fileID: 114926514047984114}
   - component: {fileID: 33077001242476674}
   - component: {fileID: 23902147837326206}
   - component: {fileID: 95410661093121232}
@@ -42,13 +42,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4575413612909646}
-  - component: {fileID: 114481458632444708}
   - component: {fileID: 114462923609711426}
   - component: {fileID: 114175453820493570}
-  - component: {fileID: 114278020575980196}
   - component: {fileID: 114103038319034358}
+  - component: {fileID: 114278020575980196}
   - component: {fileID: 54560077843386036}
-  - component: {fileID: 114607161602069058}
   m_Layer: 8
   m_Name: LaserOrigin
   m_TagString: Untagged
@@ -196,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9c99f358df32647b80407e06fc6a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 2
+  Value: 3
 --- !u!114 &114278020575980196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,28 +242,6 @@ MonoBehaviour:
   _geometryId: 0
   _deviceId: 5
   _pushableId: 0
---- !u!114 &114481458632444708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1992782318554860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee603d97276f4e21be5db2b97741c9c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114607161602069058
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1992782318554860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a185cb0545564aae90ac4e9336d07d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114895118834483380
 MonoBehaviour:
   m_ObjectHideFlags: 1
