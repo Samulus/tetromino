@@ -17,9 +17,23 @@ namespace Camera {
     public UnityEngine.Camera Cam;
     public GameObject lookAt;
     public float SpeedMetersPerSec;
-    
+    private float maxPercent = 0.7f;
+
+    private bool OrbitCamera() {
+      if (Input.GetMouseButton(2)) {
+        if (Input.GetAxis("Mouse X") < 0) {
+          transform.RotateAround(lookAt.transform.position, Vector3.up, Time.deltaTime * SpeedMetersPerSec);
+          return true;
+        }
+        if (Input.GetAxis("Mouse X") > 0) {
+          transform.RotateAround(lookAt.transform.position, Vector3.up, -Time.deltaTime * SpeedMetersPerSec);
+          return true;
+        }
+      }
+      return false;
+    }
+
     private void Update() {
-      //transform.LookAt(lookAt.transform.position);
       if (Input.GetKey("q")) {
         transform.RotateAround(lookAt.transform.position, Vector3.up, Time.deltaTime * SpeedMetersPerSec);
       }
@@ -28,12 +42,12 @@ namespace Camera {
         transform.RotateAround(lookAt.transform.position, Vector3.up, -Time.deltaTime * SpeedMetersPerSec);
       }
 
+
       if (Input.GetAxis("Mouse ScrollWheel") > 0) {
         Cam.orthographicSize -= 0.1f;
       }
       else if (Input.GetAxis("Mouse ScrollWheel") < 0) {
         Cam.orthographicSize += 0.1f;
-        
       }
     }
   }
