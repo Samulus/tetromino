@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using Tags;
 using UnityEngine;
 
 namespace Devices.LaserSender {
@@ -41,7 +42,7 @@ namespace Devices.LaserSender {
     public bool LaserHasCollision(out Vector3 point) {
       point = Vector3.zero;
       var fwd = transform.TransformDirection(Vector3.forward);
-      Debug.DrawRay(transform.position, fwd, Color.cyan, MaxDistance);
+      //Debug.DrawRay(transform.position, fwd, Color.cyan, MaxDistance);
 
       var hits = Physics.RaycastAll(transform.position, fwd, MaxDistance);
       if (hits.Length >= 1) {
@@ -53,7 +54,13 @@ namespace Devices.LaserSender {
       // laser origin.
 
       foreach (var h in hits) {
+        
         if (h.transform.GetComponent<LaserBoxCollider>() != null) continue;
+
+        var maybeTag = h.transform.GetComponent<Tag>();
+        if (maybeTag && maybeTag.Type == TagType.Device) Debug.Log(maybeTag.DeviceId);
+        if (maybeTag != null && maybeTag.Type == TagType.Sensor) continue;
+        
         point = h.point;
         var center = new Vector3(0, 0, h.distance / 2.0f);
         var size = new Vector3(0.25f, 0.25f, h.distance);
