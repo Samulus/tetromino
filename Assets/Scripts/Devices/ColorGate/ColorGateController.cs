@@ -22,7 +22,7 @@ namespace Devices.ColorGate {
     private bool _isOpen;
 
     private void Start() {
-      _tagPrescenceZone = transform.parent.GetComponentInChildren<TagPrescenceZone>();
+      _tagPrescenceZone = GetComponentInChildren<TagPrescenceZone>();
       _tagPrescenceZone.SetOnEntry(OnItemEntry);
       _tagPrescenceZone.SetOnExit(OnItemExit);
 
