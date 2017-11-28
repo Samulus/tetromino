@@ -22,8 +22,12 @@ namespace Devices.RotateableMirror {
 
     private void OnTriggerEnter(Collider other) {
       if (_incomingLaser != null) return;
+      
       var maybeTag = other.GetComponent<Tag>();
       if (maybeTag == null || maybeTag.Type != TagType.Device || maybeTag.DeviceId != DeviceId.Laser) return;
+      if (maybeTag.Type == TagType.Sensor) return;
+      if (other.name == "_origin") return; // TODO: Ensure we aren't colliding with ourselves in a better way
+      
       _incomingLaser = other;
       _laser.enabled = true;
       _laser.GetComponent<GameObjectColor>().Value = other.GetComponent<GameObjectColor>().Value;
