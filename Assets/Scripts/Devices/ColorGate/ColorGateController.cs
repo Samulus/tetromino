@@ -37,16 +37,22 @@ namespace Devices.ColorGate {
     }
 
     private void OnItemEntry(GameObject item) {
-      var ttag = item.GetComponent<Tag>();
-      if (ttag.Type != TagType.Agent || ttag.AgentId != AgentId.Player) return;
+      var maybePlayer = item.GetComponent<Tag>();
+      if (maybePlayer.Type != TagType.Agent || maybePlayer.AgentId != AgentId.Player) return;
       var color = item.GetComponentInChildren<GameObjectColor>();
       _isOpen = color.Value == RequiredColor;
-      _boxCollider.isTrigger = _isOpen;
+      if (_isOpen) {
+        _boxCollider.isTrigger = _isOpen;
+        Debug.Log("Opening the Door");
+        _boxCollider.enabled = false;
+      }
     }
 
     private void OnItemExit(GameObject item) {
       var ttag = item.GetComponent<Tag>();
       if (ttag.Type != TagType.Agent || ttag.AgentId != AgentId.Player) return;
+      Debug.Log("Closing the Door");
+      _boxCollider.enabled = true;
       _isOpen = false;
       _boxCollider.isTrigger = _isOpen;
     }
