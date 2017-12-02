@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Tags;
+using UnityEditor;
 using UnityEngine;
 
 namespace Devices.LaserSender {
@@ -39,6 +40,20 @@ namespace Devices.LaserSender {
                          "Caught attempt to use LaserRaycaster without sibling BoxCollider component");
     }
 
+    public RaycastHit? ReverseHit(Transform theirTransform) {
+      var results = Physics.RaycastAll(transform.position, transform.forward, Single.PositiveInfinity);
+      Debug.DrawRay(transform.position, transform.forward, Color.green, Single.PositiveInfinity);
+
+      foreach (var r in results) {
+        if (r.transform == theirTransform) {
+          return r;
+        }
+      }
+      
+      return null;
+    }
+
+
     public bool LaserHasCollision(out Vector3 point) {
       point = Vector3.zero;
       var fwd = transform.TransformDirection(Vector3.forward);
@@ -53,15 +68,14 @@ namespace Devices.LaserSender {
       // laser origin.
 
       foreach (var h in hits) {
-        
         if (h.transform.GetComponent<LaserBoxCollider>() != null) continue;
 
         var maybeTag = h.transform.GetComponent<Tag>();
         if (maybeTag != null && maybeTag.Type == TagType.Sensor) continue;
-        
+
         point = h.point;
         var center = new Vector3(0, 0, h.distance / 2.0f);
-        var size = new Vector3(0.25f, 0.25f, h.distance);
+        var size = new Vector3(0.1f, 0.1f, h.distance);
         if (_laserBoxCollider)
           _laserBoxCollider.ResizeBoxCollider(center, size);
         return true;

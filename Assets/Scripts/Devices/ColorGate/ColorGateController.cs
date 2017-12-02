@@ -43,7 +43,6 @@ namespace Devices.ColorGate {
       _isOpen = color.Value == RequiredColor;
       if (_isOpen) {
         _boxCollider.isTrigger = _isOpen;
-        Debug.Log("Opening the Door");
         _boxCollider.enabled = false;
       }
     }
@@ -51,7 +50,6 @@ namespace Devices.ColorGate {
     private void OnItemExit(GameObject item) {
       var ttag = item.GetComponent<Tag>();
       if (ttag.Type != TagType.Agent || ttag.AgentId != AgentId.Player) return;
-      Debug.Log("Closing the Door");
       _boxCollider.enabled = true;
       _isOpen = false;
       _boxCollider.isTrigger = _isOpen;

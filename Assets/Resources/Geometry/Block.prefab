@@ -29,7 +29,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4036528363916592
 Transform:
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b5204bf53ec9e184d8b82a086f2522d5, type: 2}
+  - {fileID: 2100000, guid: 4ee4066273349ed41acaf5e23963b3b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,4 +128,4 @@ MonoBehaviour:
   _agentId: 0
   _geometryId: 0
   _deviceId: 0
-  _pickUpId: 0
+  _pushableId: 0
