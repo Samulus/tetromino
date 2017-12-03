@@ -11,6 +11,7 @@
  * 0.9 2 0.75
  */
 
+using Tags;
 using UnityEngine;
 using Util;
 
@@ -33,6 +34,8 @@ namespace Colors {
 
     private void OnTriggerStay(Collider other) {
       var maybeGameObjectColor = other.gameObject.GetComponentInChildren<GameObjectColor>();
+      var maybeTag = other.GetComponent<Tag>();
+      if (maybeTag != null && maybeTag.Type == TagType.Device) return; // avoid recoloring devices
       if (maybeGameObjectColor == null) return;
       maybeGameObjectColor.Value = _gameObjectColor.Value;
     }
