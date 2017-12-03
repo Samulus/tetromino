@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using Tags;
-using UnityEditor;
 using UnityEngine;
 
 namespace Devices.LaserSender {
