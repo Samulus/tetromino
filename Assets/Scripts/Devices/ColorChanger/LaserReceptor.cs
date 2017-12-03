@@ -36,9 +36,9 @@ namespace Devices.ColorChanger {
     }
 
     private void OnTriggerExit(Collider other) {
-      var objTag = other.GetComponent<Tag>();
-      if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId != DeviceId.Laser) return;
-      _gameObjectColor.Value = GameObjectColor.Colors.NoColor;
+      //var objTag = other.GetComponent<Tag>();
+      //if (objTag == null || objTag.Type != TagType.Device || objTag.DeviceId != DeviceId.Laser) return;
+      //_gameObjectColor.Value = GameObjectColor.Colors.NoColor;
     }
   }
 
