@@ -21,6 +21,20 @@ namespace Player.Animation.Locomotion {
         return;
       }
 
+      GameObject rotateableMirror;
+      if (PlayerInput.RequestToPushRotateableMirror(out rotateableMirror)) {
+        animator.SetBool("isPushing", true);
+        animator.SetBool("isIdle", false);
+        var inventory = GameObject.Find("Inventory").transform;
+        rotateableMirror.transform.SetParent(inventory.transform, true);
+      }
+      else if (PlayerInput.RequestToPullRotateableMirror(out rotateableMirror)) {
+        animator.SetBool("isPulling", true);
+        animator.SetBool("isIdle", false);
+        var inventory = GameObject.Find("Inventory").transform;
+        rotateableMirror.transform.SetParent(inventory.transform, true);
+      }
+
       GameObject sokoBlock;
       if (PlayerInput.RequestToPushSokoBlock(out sokoBlock)) {
         

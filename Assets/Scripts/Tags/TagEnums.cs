@@ -47,6 +47,8 @@ namespace Tags {
     Laser = 5,
     SokoBlock = 6,
     LaserReceptor = 7,
+    RotateableMirrorLeft = 8,
+    RotateableMirrorRight = 9,
   }
 
   [Serializable]

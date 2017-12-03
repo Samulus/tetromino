@@ -18,11 +18,7 @@ namespace Player.Animation.Locomotion {
         if (inventory.childCount >= 1) {
           // Get the Childer Pusher and put it 
           var pusher = GameObject.Find("Inventory").transform.GetChild(0);
-          var tag = pusher.GetComponent<Tag>();
-
-          if (tag.Type != TagType.Device || tag.DeviceId != DeviceId.SokoBlock) return;
           var devices = GameObject.Find("Devices").transform;
-
           pusher.SetParent(devices, true);
         }
         return;

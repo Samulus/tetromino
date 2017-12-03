@@ -1245,10 +1245,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4003465339430894, guid: 067b5f5c2fd90ad48bd62571ef16a454, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1964769794708790, guid: 067b5f5c2fd90ad48bd62571ef16a454, type: 2}
       propertyPath: m_Name
       value: RotateableMirrorRight (1)
@@ -3866,16 +3862,16 @@ Transform:
   - {fileID: 1489064734}
   - {fileID: 735156204}
   - {fileID: 1859167611}
+  - {fileID: 1299285516}
   - {fileID: 112984042}
   - {fileID: 1386022486}
   - {fileID: 2094312430}
+  - {fileID: 1784864020}
   - {fileID: 822812942}
   - {fileID: 528048511}
   - {fileID: 1829268984}
-  - {fileID: 1310746208}
-  - {fileID: 1299285516}
-  - {fileID: 1784864020}
   - {fileID: 930489246}
+  - {fileID: 1310746208}
   m_Father: {fileID: 420920076}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
