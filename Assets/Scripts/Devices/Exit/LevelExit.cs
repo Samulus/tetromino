@@ -19,6 +19,10 @@ namespace Devices.Exit {
       SceneManager.LoadScene(_currentlevel.ToString("000"));
     }
 
+    private void StartGame() {
+      
+    }
+
     private void Start() {
       int.TryParse(SceneManager.GetActiveScene().name, out _currentlevel);
     }
